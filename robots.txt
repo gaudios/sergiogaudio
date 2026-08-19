@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gaudios.github.io/sergiogaudio/sitemap.xml
