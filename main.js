@@ -43,3 +43,77 @@
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 })();
+
+/* ── MOBILE MENU ── */
+(function(){
+  // Inject hamburger + mobile menu into every page
+  const nav = document.querySelector('nav');
+  if(!nav) return;
+
+  // Hamburger button
+  const btn = document.createElement('button');
+  btn.className = 'hamburger';
+  btn.setAttribute('aria-label','Menu');
+  btn.innerHTML = '<span></span><span></span><span></span>';
+  nav.appendChild(btn);
+
+  // Mobile menu overlay
+  const menu = document.createElement('div');
+  menu.className = 'mobile-menu';
+
+  // Build links from existing nav
+  const links = [
+    {href:'index.html', it:'Home', en:'Home'},
+    {href:'about.html', it:'Chi sono', en:'About'},
+    {href:'publications.html', it:'Pubblicazioni', en:'Publications'},
+    {href:'research.html', it:'Ricerca', en:'Research'},
+    {href:'teaching.html', it:'Insegnamento', en:'Teaching'},
+    {href:'passions.html', it:'Passioni', en:'Passions'},
+    {href:'contact.html', it:'Contatti', en:'Contact'},
+  ];
+
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  const lang = localStorage.getItem('lang') || 'it';
+
+  links.forEach(l => {
+    const a = document.createElement('a');
+    a.href = l.href;
+    a.setAttribute('data-it', l.it);
+    a.setAttribute('data-en', l.en);
+    a.textContent = lang === 'en' ? l.en : l.it;
+    if(l.href === currentPage || (currentPage === '' && l.href === 'index.html'))
+      a.classList.add('active');
+    menu.appendChild(a);
+  });
+
+  // Lang toggle in mobile menu
+  const langBtn = document.createElement('button');
+  langBtn.className = 'lang-btn-mob';
+  langBtn.textContent = lang === 'en' ? 'IT' : 'EN';
+  langBtn.addEventListener('click', () => {
+    document.getElementById('lang-toggle')?.click();
+    langBtn.textContent = (localStorage.getItem('lang')||'it') === 'en' ? 'IT' : 'EN';
+    menu.querySelectorAll('a[data-it]').forEach(a => {
+      const l2 = localStorage.getItem('lang') || 'it';
+      a.textContent = l2 === 'en' ? a.getAttribute('data-en') : a.getAttribute('data-it');
+    });
+  });
+  menu.appendChild(langBtn);
+  document.body.appendChild(menu);
+
+  // Toggle
+  btn.addEventListener('click', () => {
+    btn.classList.toggle('open');
+    menu.classList.toggle('open');
+    document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+  });
+
+  // Close on link click
+  menu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      btn.classList.remove('open');
+      menu.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+})();

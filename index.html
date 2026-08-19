@@ -3,133 +3,88 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sergio Gaudio — Physicist & Educator</title>
+<title>Sergio Gaudio — Physicist</title>
 <link rel="stylesheet" href="style.css">
 <style>
-/* Hero overrides */
-#hero {
-  position:relative; z-index:1; min-height:100vh;
-  display:flex; flex-direction:column; justify-content:center; align-items:flex-start;
-  padding:0 10vw; padding-top:80px;
+/* ── FULL-SCREEN HERO ── */
+.home-hero {
+  min-height:100vh; display:flex; flex-direction:column;
+  justify-content:center; padding:0 10vw;
+  position:relative; overflow:hidden;
 }
-.hero-eyebrow {
-  font-family:'Cinzel',serif; font-size:0.75rem; letter-spacing:0.38em;
-  color:var(--gold); text-transform:uppercase; margin-bottom:1.5rem;
-  opacity:0; animation:fadeUp 1s ease 0.3s forwards;
+.home-eyebrow {
+  font-family:'Cinzel',serif; font-size:0.7rem; letter-spacing:0.4em;
+  color:var(--gold); text-transform:uppercase; margin-bottom:1.2rem;
+  opacity:0; transform:translateY(12px);
+  animation:fadeUp 0.8s ease 0.3s forwards;
 }
-.hero-name {
-  font-family:'Cinzel',serif; font-size:clamp(2.8rem,7vw,6.2rem);
-  font-weight:600; letter-spacing:0.05em; color:var(--text); line-height:1.08;
-  opacity:0; animation:fadeUp 1s ease 0.5s forwards;
+.home-name {
+  font-family:'Cinzel',serif;
+  font-size:clamp(2.8rem,8vw,7.5rem);
+  font-weight:600; letter-spacing:0.02em;
+  color:var(--text); line-height:0.95;
+  opacity:0; transform:translateY(16px);
+  animation:fadeUp 0.9s ease 0.5s forwards;
 }
-.hero-name span { color:var(--gold); }
-.hero-tagline {
-  font-family:'Cormorant Garamond',serif; font-size:clamp(1.1rem,2vw,1.45rem);
-  font-style:italic; color:var(--text-dim); max-width:580px; margin-top:1.5rem;
-  opacity:0; animation:fadeUp 1s ease 0.7s forwards;
+.home-name em { color:var(--gold); font-style:normal; display:block; }
+.home-tagline {
+  font-family:'Cormorant Garamond',serif; font-style:italic;
+  font-size:clamp(1rem,2vw,1.4rem); color:var(--text-dim);
+  max-width:520px; margin-top:1.6rem; line-height:1.7;
+  opacity:0; transform:translateY(12px);
+  animation:fadeUp 0.9s ease 0.7s forwards;
 }
-.hero-divider {
-  width:80px; height:1px;
+.home-rule {
+  width:60px; height:1px;
   background:linear-gradient(to right,var(--gold),transparent);
-  margin:2rem 0; opacity:0; animation:fadeUp 1s ease 0.9s forwards;
+  margin:2rem 0;
+  opacity:0; animation:fadeUp 0.8s ease 0.9s forwards;
 }
-.hero-roles { display:flex; flex-wrap:wrap; gap:0.8rem; opacity:0; animation:fadeUp 1s ease 1.1s forwards; }
-.role-tag {
-  font-family:'Cormorant Garamond',serif; font-size:0.88rem; letter-spacing:0.1em;
-  color:var(--gold); text-transform:uppercase; border:1px solid var(--border2);
-  padding:0.28rem 1rem; border-radius:2px; background:var(--gold-dim);
-}
-.hero-nav {
-  display:flex; gap:1.5rem; margin-top:2.5rem;
-  opacity:0; animation:fadeUp 1s ease 1.3s forwards;
-}
-.hero-link {
-  font-family:'Cinzel',serif; font-size:0.72rem; letter-spacing:0.2em;
-  text-transform:uppercase; text-decoration:none;
-  padding:0.6rem 1.6rem; border-radius:2px;
-  transition:all 0.3s;
-}
-.hero-link.primary { background:var(--gold); color:var(--bg); }
-.hero-link.primary:hover { background:var(--gold-light); }
-.hero-link.secondary { border:1px solid var(--border2); color:var(--gold); }
-.hero-link.secondary:hover { background:var(--gold-dim); }
-.hero-scroll {
-  position:absolute; bottom:2.5rem; left:50%; transform:translateX(-50%);
+.home-scroll {
   font-family:'Cinzel',serif; font-size:0.62rem; letter-spacing:0.3em;
   color:var(--text-dim); text-transform:uppercase;
-  opacity:0; animation:fadeUp 1s ease 1.6s forwards;
-  display:flex; flex-direction:column; align-items:center; gap:0.6rem;
+  opacity:0; animation:fadeUp 0.8s ease 1.1s forwards;
 }
-.scroll-line {
-  width:1px; height:48px; background:linear-gradient(to bottom,var(--gold),transparent);
-  animation:scrollPulse 2.2s ease-in-out infinite;
+@keyframes fadeUp {
+  to { opacity:1; transform:translateY(0); }
 }
-@keyframes scrollPulse { 0%,100%{transform:scaleY(1);opacity:1;} 50%{transform:scaleY(0.4);opacity:0.2;} }
-@keyframes fadeUp { from{opacity:0;transform:translateY(26px);} to{opacity:1;transform:translateY(0);} }
 
-/* About section */
-#about { position:relative; z-index:1; padding:6rem 10vw; background:rgba(11,18,32,0.65); }
-.about-grid { display:grid; grid-template-columns:1.4fr 1fr; gap:4rem; align-items:start; }
-.about-text p { margin-bottom:1.2rem; }
-.about-text p:last-child { margin-bottom:0; }
-.about-aside { border-left:1px solid var(--border2); padding-left:2rem; }
-.aside-block { margin-bottom:2rem; }
-.aside-label {
-  font-family:'Cinzel',serif; font-size:0.67rem; letter-spacing:0.28em;
-  color:var(--gold); text-transform:uppercase; margin-bottom:0.45rem;
+/* ── NAV CARDS ── */
+.nav-cards {
+  padding:6rem 10vw; display:grid;
+  grid-template-columns:repeat(3,1fr); gap:1.5rem;
 }
-.aside-val {
-  font-family:'Cormorant Garamond',serif; font-size:1rem;
-  color:var(--text-dim); font-style:italic; line-height:1.75;
+.nav-card {
+  border:1px solid var(--border); border-radius:4px;
+  padding:2.5rem 2rem; text-decoration:none;
+  transition:all 0.3s; position:relative; overflow:hidden;
+  background:linear-gradient(135deg,rgba(15,24,40,0.6),transparent);
 }
-.aside-links { display:flex; flex-direction:column; gap:0.5rem; margin-top:0.5rem; }
-.aside-link {
-  font-family:'Cormorant Garamond',serif; font-size:0.95rem; font-style:italic;
-  color:var(--gold); text-decoration:none; transition:color 0.3s;
-  display:flex; align-items:center; gap:0.5rem;
+.nav-card::before {
+  content:''; position:absolute; bottom:0; left:0; right:0; height:2px;
+  background:linear-gradient(to right,transparent,var(--gold),transparent);
+  opacity:0; transition:opacity 0.3s;
 }
-.aside-link:hover { color:var(--gold-light); }
-.aside-link::before { content:'→'; font-style:normal; font-size:0.8rem; }
-
-/* Quote */
-#quote { position:relative; z-index:1; text-align:center; padding:5rem 18vw;
-  background:radial-gradient(ellipse at center,rgba(201,168,76,0.06) 0%,transparent 70%); }
-.q-text {
-  font-family:'Cormorant Garamond',serif; font-size:clamp(1.4rem,3vw,2.1rem);
-  font-style:italic; color:var(--text); line-height:1.7; margin-bottom:1.5rem;
+.nav-card:hover { border-color:var(--border2); transform:translateY(-4px); }
+.nav-card:hover::before { opacity:1; }
+.card-icon { font-size:1.8rem; margin-bottom:1rem; display:block; }
+.card-title {
+  font-family:'Cinzel',serif; font-size:0.75rem; letter-spacing:0.2em;
+  color:var(--gold); text-transform:uppercase; margin-bottom:0.5rem;
 }
-.q-text::before { content:'\201C'; color:var(--gold); margin-right:0.1em; }
-.q-text::after  { content:'\201D'; color:var(--gold); margin-left:0.1em; }
-.q-attr { font-family:'Cinzel',serif; font-size:0.72rem; letter-spacing:0.28em; color:var(--text-dim); text-transform:uppercase; }
-
-/* Preview grid */
-#preview { position:relative; z-index:1; padding:5rem 10vw 6rem; }
-.preview-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:0.5rem; }
-.preview-card {
-  border:1px solid var(--border); background:var(--gold-dim);
-  border-radius:4px; padding:2rem 1.6rem; text-decoration:none;
-  transition:border-color 0.3s,transform 0.3s,background 0.3s; display:block;
-}
-.preview-card:hover { border-color:var(--border2); transform:translateY(-4px); background:rgba(201,168,76,0.18); }
-.preview-icon { font-size:1.8rem; margin-bottom:0.9rem; }
-.preview-title {
-  font-family:'Cinzel',serif; font-size:0.8rem; letter-spacing:0.2em;
-  color:var(--gold); text-transform:uppercase; margin-bottom:0.6rem;
-}
-.preview-desc { font-family:'Cormorant Garamond',serif; font-size:0.96rem; color:var(--text-dim); font-style:italic; }
-.preview-arrow {
-  display:block; margin-top:1.2rem; font-family:'Cinzel',serif;
-  font-size:0.65rem; letter-spacing:0.2em; color:var(--gold); text-transform:uppercase;
+.card-desc {
+  font-family:'Cormorant Garamond',serif; font-style:italic;
+  font-size:0.95rem; color:var(--text-dim); line-height:1.6;
 }
 
 @media(max-width:900px){
-  #hero,#about,#quote,#preview{padding-left:6vw;padding-right:6vw;}
-  .about-grid{grid-template-columns:1fr;gap:2rem;}
-  .about-aside{border-left:none;border-top:1px solid var(--border2);padding-left:0;padding-top:2rem;}
-  .preview-grid{grid-template-columns:1fr 1fr;}
-  #quote{padding-left:8vw;padding-right:8vw;}
+  .home-hero{ padding:0 6vw; }
+  .nav-cards{ grid-template-columns:1fr 1fr; padding:4rem 6vw; gap:1rem; }
 }
-@media(max-width:560px){.preview-grid{grid-template-columns:1fr;}}
+@media(max-width:560px){
+  .nav-cards{ grid-template-columns:1fr; }
+  .nav-card{ padding:1.8rem 1.5rem; }
+}
 </style>
 </head>
 <body>
@@ -138,7 +93,8 @@
 <nav>
   <a class="nav-logo" href="index.html">S · G</a>
   <div class="nav-links">
-    <a href="index.html" class="active" data-it="Chi sono" data-en="About">Chi sono</a>
+    <a href="index.html" class="active" data-it="Home" data-en="Home">Home</a>
+    <a href="about.html" data-it="Chi sono" data-en="About">Chi sono</a>
     <a href="publications.html" data-it="Pubblicazioni" data-en="Publications">Pubblicazioni</a>
     <a href="research.html" data-it="Ricerca" data-en="Research">Ricerca</a>
     <a href="teaching.html" data-it="Insegnamento" data-en="Teaching">Insegnamento</a>
@@ -148,124 +104,56 @@
   </div>
 </nav>
 
-<!-- HERO -->
-<section id="hero">
-  <div class="hero-eyebrow" data-it="Fisica · Ricerca · Educazione" data-en="Physics · Research · Education">Fisica · Ricerca · Educazione</div>
-  <h1 class="hero-name">Sergio <span>Gaudio</span></h1>
-  <p class="hero-tagline"
-     data-it="Fisico, ricercatore e insegnante. Esploro le onde gravitazionali, simulo le supernovae, e trasmetto la bellezza della fisica a ogni generazione."
-     data-en="Physicist, researcher, and educator. I explore gravitational waves, simulate core-collapse supernovae, and pass on the wonder of physics to every generation.">
-    Fisico, ricercatore e insegnante. Esploro le onde gravitazionali, simulo le supernovae, e trasmetto la bellezza della fisica a ogni generazione.
+<div class="home-hero">
+  <div class="home-eyebrow" data-it="Fisico · Ricercatore · Insegnante" data-en="Physicist · Researcher · Educator">Fisico · Ricercatore · Insegnante</div>
+  <h1 class="home-name">
+    Sergio
+    <em>Gaudio</em>
+  </h1>
+  <p class="home-tagline"
+     data-it="Onde gravitazionali, materia oscura, supersolidi, supernovae. Un piede in California, uno in Calabria."
+     data-en="Gravitational waves, dark matter, supersolids, supernovae. One foot in California, one in Calabria.">
+    Onde gravitazionali, materia oscura, supersolidi, supernovae. Un piede in California, uno in Calabria.
   </p>
-  <div class="hero-divider"></div>
-  <div class="hero-roles">
-    <span class="role-tag">Los Angeles City College</span>
-    <span class="role-tag">Pasadena City College</span>
-    <span class="role-tag" data-it="Istituto Tecnico Agrario" data-en="Italian Technical Institute">Istituto Tecnico Agrario</span>
-    <span class="role-tag" data-it="Astrofisica Computazionale" data-en="Computational Astrophysics">Astrofisica Computazionale</span>
-  </div>
-  <div class="hero-nav">
-    <a class="hero-link primary" href="research.html" data-it="Vedi la ricerca" data-en="See Research">Vedi la ricerca</a>
-    <a class="hero-link secondary" href="contact.html" data-it="Contattami" data-en="Contact me">Contattami</a>
-  </div>
-  <div class="hero-scroll">
-    <div class="scroll-line"></div>
-    <span data-it="Scopri" data-en="Explore">Scopri</span>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-  <div class="s-label reveal" data-it="Profilo" data-en="Profile">Profilo</div>
-  <h2 class="s-title reveal" data-it="Chi <em>sono</em>" data-en="About <em>me</em>">Chi <em>sono</em></h2>
-  <div class="s-rule"></div>
-  <div class="about-grid">
-    <div class="about-text reveal">
-      <p data-it="Sono un fisico, ricercatore e insegnante con una vita accademica che attraversa due continenti. Ho conseguito il PhD in Fisica al Boston College con il Prof. Kevin Bedell, lavorando sulla termodinamica dei gas di Fermi ultrafreddi. Ho poi condotto ricerca sui superfluidi all'Università La Sapienza di Roma, e sulla fisica medica a UCLA."
-         data-en="I am a physicist, researcher, and educator with an academic life spanning two continents. I earned my PhD in Physics at Boston College under Prof. Kevin Bedell, working on the thermodynamics of ultracold Fermi gases. I then pursued research on superfluids at Università La Sapienza in Rome, and on medical physics at UCLA.">
-        Sono un fisico, ricercatore e insegnante con una vita accademica che attraversa due continenti. Ho conseguito il PhD in Fisica al Boston College con il Prof. Kevin Bedell, lavorando sulla termodinamica dei gas di Fermi ultrafreddi. Ho poi condotto ricerca sui superfluidi all'Università La Sapienza di Roma, e sulla fisica medica a UCLA.
-      </p>
-      <p data-it="La mia ricerca si colloca all'intersezione tra astrofisica computazionale, onde gravitazionali e fisica delle particelle. Sviluppo simulazioni GPU-accelerate di supernovae (PySNova), lavoro su vincoli rigorosi sulla massa del gravitone con dati NANOGrav, e studio l'integrazione di sensori quantistici negli osservatori di onde gravitazionali."
-         data-en="My research sits at the intersection of computational astrophysics, gravitational waves, and particle physics. I develop GPU-accelerated supernova simulations (PySNova), work on rigorous graviton mass constraints using NANOGrav data, and study the integration of quantum sensors into gravitational wave observatories.">
-        La mia ricerca si colloca all'intersezione tra astrofisica computazionale, onde gravitazionali e fisica delle particelle. Sviluppo simulazioni GPU-accelerate di supernovae (PySNova), lavoro su vincoli sulla massa del gravitone con dati NANOGrav, e studio l'integrazione di sensori quantistici negli osservatori di onde gravitazionali.
-      </p>
-      <p data-it="Credo che la fisica debba essere vissuta — non è solo un insieme di equazioni, ma un modo di guardare l'universo con meraviglia e rigore al tempo stesso."
-         data-en="I believe physics should be lived — not merely memorized. It is a way of seeing the universe with both wonder and rigor.">
-        Credo che la fisica debba essere vissuta — non è solo un insieme di equazioni, ma un modo di guardare l'universo con meraviglia e rigore al tempo stesso.
-      </p>
-    </div>
-    <div class="about-aside reveal">
-      <div class="aside-block">
-        <div class="aside-label" data-it="Posizioni" data-en="Positions">Posizioni</div>
-        <div class="aside-val" data-it="Los Angeles City College<br>Pasadena City College<br>Istituto Tecnico Agrario, Italia" data-en="Los Angeles City College<br>Pasadena City College<br>Technical Agricultural Institute, Italy">Los Angeles City College<br>Pasadena City College<br>Istituto Tecnico Agrario, Italia</div>
-      </div>
-      <div class="aside-block">
-        <div class="aside-label" data-it="Interessi di ricerca" data-en="Research Interests">Interessi di ricerca</div>
-        <div class="aside-val" data-it="Onde gravitazionali<br>Fisica del gravitone<br>Simulazioni di supernovae<br>Materia condensata &amp; superfluidi<br>Sensori quantistici" data-en="Gravitational waves<br>Graviton physics<br>Supernova simulations<br>Condensed matter &amp; superfluids<br>Quantum sensors">Onde gravitazionali<br>Fisica del gravitone<br>Simulazioni di supernovae<br>Materia condensata &amp; superfluidi<br>Sensori quantistici</div>
-      </div>
-      <div class="aside-block">
-        <div class="aside-label" data-it="Target riviste" data-en="Target Journals">Target riviste</div>
-        <div class="aside-val">Physical Review D<br>Physical Review Letters</div>
-      </div>
-      <div class="aside-block">
-        <div class="aside-label" data-it="Formazione" data-en="Education">Formazione</div>
-        <div class="aside-val" data-it="PhD Fisica, Boston College<br>Postdoc, La Sapienza Roma<br>Fisica medica, UCLA" data-en="PhD Physics, Boston College<br>Postdoc, La Sapienza Rome<br>Medical Physics, UCLA">PhD Fisica, Boston College<br>Postdoc, La Sapienza Roma<br>Fisica medica, UCLA</div>
-      </div>
-      <div class="aside-block">
-        <div class="aside-label" data-it="Premi" data-en="Awards">Premi</div>
-        <div class="aside-val" data-it="Premio Spartenze — Excellence in Research<br>Gonfalone, Città di Palmi" data-en="Premio Spartenze — Excellence in Research<br>Gonfalone, City of Palmi">Premio Spartenze — Excellence in Research<br>Gonfalone, Città di Palmi</div
-      </div>
-      <div class="aside-block">
-        <div class="aside-label" data-it="Esplora" data-en="Explore">Esplora</div>
-        <div class="aside-links">
-          <a class="aside-link" href="research.html" data-it="Progetti di ricerca" data-en="Research projects">Progetti di ricerca</a>
-          <a class="aside-link" href="teaching.html" data-it="Corsi e didattica" data-en="Courses & teaching">Corsi e didattica</a>
-          <a class="aside-link" href="passions.html" data-it="Passioni" data-en="Passions">Passioni</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- QUOTE -->
-<div id="quote">
-  <p class="q-text reveal"
-     data-it="Il bello della fisica è che descrive l'invisibile con un linguaggio che la mente può abbracciare."
-     data-en="The beauty of physics lies in describing the invisible with a language the mind can embrace.">
-    Il bello della fisica è che descrive l'invisibile con un linguaggio che la mente può abbracciare.
-  </p>
-  <div class="q-attr">— Sergio Gaudio</div>
+  <div class="home-rule"></div>
+  <div class="home-scroll" data-it="Scorri per esplorare" data-en="Scroll to explore">Scorri per esplorare ↓</div>
 </div>
 
-<!-- PREVIEW -->
-<section id="preview">
-  <div class="s-label reveal" data-it="Navigazione" data-en="Navigate">Navigazione</div>
-  <h2 class="s-title reveal" data-it="Esplora il <em>sito</em>" data-en="Explore the <em>site</em>">Esplora il <em>sito</em></h2>
-  <div class="s-rule"></div>
-  <div class="preview-grid">
-    <a class="preview-card reveal" href="research.html">
-      <div class="preview-icon">🔬</div>
-      <div class="preview-title" data-it="Ricerca" data-en="Research">Ricerca</div>
-      <p class="preview-desc" data-it="Onde gravitazionali, massa del gravitone, supernovae, superfluidi, sensori quantistici." data-en="Gravitational waves, graviton mass, supernovae, superfluids, quantum sensors.">Onde gravitazionali, massa del gravitone, supernovae, superfluidi, sensori quantistici.</p>
-      <span class="preview-arrow" data-it="Scopri i progetti →" data-en="Explore projects →">Scopri i progetti →</span>
-    </a>
-    <a class="preview-card reveal" href="teaching.html">
-      <div class="preview-icon">🎓</div>
-      <div class="preview-title" data-it="Insegnamento" data-en="Teaching">Insegnamento</div>
-      <p class="preview-desc" data-it="LACC, Pasadena City College e Istituto Tecnico Agrario. Fisica e matematica tra California e Italia." data-en="LACC, Pasadena City College and Italian Technical Institute. Physics and mathematics between California and Italy.">LACC, Pasadena City College e Istituto Tecnico Agrario. Fisica e matematica tra California e Italia.</p>
-      <span class="preview-arrow" data-it="Vedi i corsi →" data-en="See courses →">Vedi i corsi →</span>
-    </a>
-    <a class="preview-card reveal" href="passions.html">
-      <div class="preview-icon">🎷</div>
-      <div class="preview-title" data-it="Passioni" data-en="Passions">Passioni</div>
-      <p class="preview-desc" data-it="Jazz, poesia italiana, hi-fi e vinile. La fisica del suono vissuta come arte." data-en="Jazz, Italian poetry, hi-fi and vinyl. The physics of sound experienced as art.">Jazz, poesia italiana, hi-fi e vinile. La fisica del suono vissuta come arte.</p>
-      <span class="preview-arrow" data-it="Scopri →" data-en="Discover →">Scopri →</span>
-    </a>
-  </div>
-</section>
+<div class="nav-cards">
+  <a class="nav-card reveal" href="about.html">
+    <span class="card-icon">👤</span>
+    <div class="card-title" data-it="Chi sono" data-en="About">Chi sono</div>
+    <div class="card-desc" data-it="PhD Boston College, La Sapienza, UCLA, LIGO. Calabrese." data-en="PhD Boston College, La Sapienza, UCLA, LIGO. From Calabria.">PhD Boston College, La Sapienza, UCLA, LIGO. Calabrese.</div>
+  </a>
+  <a class="nav-card reveal" href="publications.html">
+    <span class="card-icon">📄</span>
+    <div class="card-title" data-it="Pubblicazioni" data-en="Publications">Pubblicazioni</div>
+    <div class="card-desc" data-it="~100 articoli. Materia condensata, onde gravitazionali, supernovae." data-en="~100 papers. Condensed matter, gravitational waves, supernovae.">~100 articoli. Materia condensata, onde gravitazionali, supernovae.</div>
+  </a>
+  <a class="nav-card reveal" href="research.html">
+    <span class="card-icon">🔭</span>
+    <div class="card-title" data-it="Ricerca" data-en="Research">Ricerca</div>
+    <div class="card-desc" data-it="Sensori quantistici, DM, BCS-BEC, PySNova." data-en="Quantum sensors, DM, BCS-BEC, PySNova.">Sensori quantistici, DM, BCS-BEC, PySNova.</div>
+  </a>
+  <a class="nav-card reveal" href="teaching.html">
+    <span class="card-icon">🎓</span>
+    <div class="card-title" data-it="Insegnamento" data-en="Teaching">Insegnamento</div>
+    <div class="card-desc" data-it="Los Angeles City College · Pasadena City College." data-en="Los Angeles City College · Pasadena City College.">Los Angeles City College · Pasadena City College.</div>
+  </a>
+  <a class="nav-card reveal" href="passions.html">
+    <span class="card-icon">🎷</span>
+    <div class="card-title" data-it="Passioni" data-en="Passions">Passioni</div>
+    <div class="card-desc" data-it="Jazz, poesia italiana, Hi-Fi e vinile." data-en="Jazz, Italian poetry, Hi-Fi and vinyl.">Jazz, poesia italiana, Hi-Fi e vinile.</div>
+  </a>
+  <a class="nav-card reveal" href="contact.html">
+    <span class="card-icon">✉</span>
+    <div class="card-title" data-it="Contatti" data-en="Contact">Contatti</div>
+    <div class="card-desc" data-it="LACC · Google Scholar · ResearchGate." data-en="LACC · Google Scholar · ResearchGate.">LACC · Google Scholar · ResearchGate.</div>
+  </a>
+</div>
 
 <footer>
-  <div class="footer-copy" data-it="© 2026 Sergio Gaudio. Tutti i diritti riservati." data-en="© 2026 Sergio Gaudio. All rights reserved.">© 2026 Sergio Gaudio. Tutti i diritti riservati.</div>
+  <div class="footer-copy" data-it="© 2026 Sergio Gaudio." data-en="© 2026 Sergio Gaudio.">© 2026 Sergio Gaudio.</div>
   <div class="footer-sig">S · G</div>
 </footer>
 
