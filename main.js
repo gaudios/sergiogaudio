@@ -17,23 +17,25 @@
 })();
 
 // ─── LANGUAGE TOGGLE ───
+window.applyLang = function(l){
+  localStorage.setItem('sg-lang', l);
+  document.documentElement.setAttribute('data-lang', l);
+  const btn = document.getElementById('lang-toggle');
+  if(btn) btn.textContent = l==='it' ? 'EN' : 'IT';
+  document.querySelectorAll('[data-it]').forEach(el => {
+    const val = el.getAttribute('data-'+l);
+    if(val !== null) el.innerHTML = val;
+  });
+};
+
 (function(){
   const btn = document.getElementById('lang-toggle');
   if(!btn) return;
-  let lang = localStorage.getItem('sg-lang') || 'it';
-
-  function applyLang(l){
-    lang = l;
-    localStorage.setItem('sg-lang', l);
-    document.documentElement.setAttribute('data-lang', l);
-    btn.textContent = l==='it' ? 'EN' : 'IT';
-    document.querySelectorAll('[data-it]').forEach(el => {
-      const val = el.getAttribute('data-'+l);
-      if(val !== null) el.innerHTML = val;
-    });
-  }
-  btn.addEventListener('click', () => applyLang(lang==='it'?'en':'it'));
-  applyLang(lang); // restore on page load
+  btn.addEventListener('click', () => {
+    const cur = localStorage.getItem('sg-lang') || 'it';
+    window.applyLang(cur === 'it' ? 'en' : 'it');
+  });
+  window.applyLang(localStorage.getItem('sg-lang') || 'it');
 })();
 
 // ─── SCROLL REVEAL ───
@@ -91,12 +93,10 @@
   langBtn.className = 'lang-btn-mob';
   langBtn.textContent = lang === 'en' ? 'IT' : 'EN';
   langBtn.addEventListener('click', () => {
-    document.getElementById('lang-toggle')?.click();
-    langBtn.textContent = (localStorage.getItem('sg-lang')||'it') === 'en' ? 'IT' : 'EN';
-    menu.querySelectorAll('a[data-it]').forEach(a => {
-      const l2 = localStorage.getItem('sg-lang') || 'it';
-      a.textContent = l2 === 'en' ? a.getAttribute('data-en') : a.getAttribute('data-it');
-    });
+    const cur = localStorage.getItem('sg-lang') || 'it';
+    const next = cur === 'it' ? 'en' : 'it';
+    window.applyLang(next);
+    langBtn.textContent = next === 'en' ? 'IT' : 'EN';
   });
   menu.appendChild(langBtn);
   document.body.appendChild(menu);
