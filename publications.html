@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="it" data-lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pubblicazioni — Sergio Gaudio</title>
+<link rel="stylesheet" href="style.css">
+<style>
+/* ─── HERO ─────────────────────────────────── */
+.pub-hero {
+  position:relative; z-index:1;
+  padding:9rem 10vw 0; overflow:hidden;
+  border-bottom:1px solid var(--border);
+}
+.hero-eyebrow {
+  font-family:'Cinzel',serif; font-size:.7rem; letter-spacing:.38em;
+  color:var(--gold); text-transform:uppercase; margin-bottom:.8rem;
+}
+.hero-title {
+  font-family:'Cinzel',serif;
+  font-size:clamp(3rem,8vw,7rem);
+  font-weight:600; letter-spacing:.02em;
+  color:var(--text); line-height:.95;
+  position:relative; z-index:2;
+}
+.hero-title em { color:var(--gold); font-style:normal; display:block; }
+.hero-sub {
+  font-family:'Cormorant Garamond',serif; font-style:italic;
+  font-size:clamp(1rem,1.8vw,1.25rem); color:var(--text-dim);
+  max-width:560px; margin:1.4rem 0 0; position:relative; z-index:2;
+}
+.hero-rule {
+  width:70px; height:1px;
+  background:linear-gradient(to right,var(--gold),transparent);
+  margin:1.8rem 0 0; position:relative; z-index:2;
+}
+.wave-stage {
+  position:relative; height:160px; margin-top:3rem;
+  overflow:hidden;
+}
+#wave-canvas { position:absolute; inset:0; width:100%; height:100%; }
+
+/* ─── STATS ─────────────────────────────────── */
+.pub-content { position:relative; z-index:1; padding:0 10vw 6rem; }
+.metrics {
+  display:grid; grid-template-columns:repeat(4,1fr);
+  border:1px solid var(--border); border-radius:4px;
+  overflow:hidden; margin:3.5rem 0;
+}
+.metric {
+  padding:2.4rem 1.4rem; text-align:center;
+  border-right:1px solid var(--border);
+  position:relative; transition:background .4s;
+  cursor:default;
+}
+.metric:last-child { border-right:none; }
+.metric::after {
+  content:''; position:absolute; bottom:0; left:20%; right:20%; height:2px;
+  background:linear-gradient(to right,transparent,var(--gold),transparent);
+  opacity:0; transition:opacity .4s;
+}
+.metric:hover::after { opacity:1; }
+.metric:hover { background:rgba(201,168,76,.07); }
+.m-num {
+  font-family:'Cinzel',serif; font-size:2.8rem; font-weight:600;
+  color:var(--gold); display:block; line-height:1;
+  text-shadow:0 0 50px rgba(201,168,76,.5);
+}
+.m-label {
+  font-family:'Cormorant Garamond',serif; font-style:italic;
+  font-size:.95rem; color:var(--text-dim); margin-top:.45rem; display:block;
+}
+.m-sub {
+  font-family:'Cinzel',serif; font-size:.55rem; letter-spacing:.22em;
+  color:var(--accent); text-transform:uppercase; margin-top:.3rem; display:block;
+}
+
+/* ─── EXT LINKS ─────────────────────────────── */
+.ext-row { display:flex; gap:.9rem; margin-bottom:5rem; flex-wrap:wrap; }
+.ext-a {
+  font-family:'Cinzel',serif; font-size:.68rem; letter-spacing:.18em;
+  text-transform:uppercase; text-decoration:none; border-radius:2px;
+  padding:.6rem 1.4rem; transition:all .3s; display:inline-flex; align-items:center; gap:.5rem;
+}
+.ext-a.gold  { background:var(--gold); color:var(--bg); }
+.ext-a.gold:hover  { background:var(--gold-light); transform:translateY(-2px); }
+.ext-a.ghost { border:1px solid var(--border2); color:var(--gold); }
+.ext-a.ghost:hover { background:rgba(201,168,76,.2); transform:translateY(-2px); }
+
+/* ─── SECTION HEAD ────────────────────────────  */
+.sec-kicker {
+  font-family:'Cinzel',serif; font-size:.65rem; letter-spacing:.35em;
+  color:var(--gold); text-transform:uppercase; margin-bottom:.35rem;
+}
+.sec-head {
+  font-family:'Cormorant Garamond',serif; font-weight:300;
+  font-size:clamp(1.8rem,3.5vw,2.8rem); color:var(--text); line-height:1.1;
+}
+.sec-head em { color:var(--gold); font-style:italic; }
+.sec-note {
+  font-family:'Cormorant Garamond',serif; font-style:italic;
+  font-size:.92rem; color:var(--text-dim); max-width:580px;
+  margin:.8rem 0 0;
+}
+.sec-rule { width:50px; height:1px;
+  background:linear-gradient(to right,var(--gold),transparent);
+  margin:1.2rem 0 2.5rem; }
+
+/* ─── FEATURED PAPER ─────────────────────────── */
+.feat-paper {
+  border:1px solid var(--border2); border-radius:4px;
+  padding:3rem 3.5rem; margin-bottom:4rem;
+  background:linear-gradient(135deg,rgba(201,168,76,.08),rgba(7,11,18,.9));
+  position:relative; overflow:hidden;
+}
+.feat-paper::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:3px;
+  background:linear-gradient(to right,var(--gold),var(--accent),var(--gold));
+}
+.feat-badge {
+  font-family:'Cinzel',serif; font-size:.6rem; letter-spacing:.22em;
+  color:var(--bg); background:var(--gold); padding:.2rem .8rem;
+  border-radius:2px; text-transform:uppercase; display:inline-block;
+  margin-bottom:1.2rem;
+}
+.feat-year {
+  font-family:'Cinzel',serif; font-size:.7rem; letter-spacing:.2em;
+  color:var(--accent); text-transform:uppercase; margin-bottom:.5rem;
+}
+.feat-title {
+  font-family:'Cormorant Garamond',serif; font-weight:500;
+  font-size:clamp(1.4rem,2.5vw,2rem); color:var(--text); line-height:1.35;
+  margin-bottom:1rem;
+}
+.feat-journal {
+  font-family:'Cinzel',serif; font-size:.62rem; letter-spacing:.15em;
+  color:var(--accent); text-transform:uppercase; margin-bottom:1.2rem;
+}
+.feat-abstract {
+  font-family:'Cormorant Garamond',serif; font-style:italic;
+  font-size:1rem; color:var(--text-dim); line-height:1.8; max-width:720px;
+}
+.feat-tags { display:flex; gap:.6rem; flex-wrap:wrap; margin-top:1.4rem; }
+.ftag {
+  font-family:'Cinzel',serif; font-size:.57rem; letter-spacing:.15em;
+  color:var(--gold); border:1px solid var(--border2);
+  padding:.18rem .65rem; border-radius:2px; text-transform:uppercase;
+}
+.feat-glow {
+  position:absolute; bottom:-40px; right:-40px;
+  width:220px; height:220px; border-radius:50%;
+  background:radial-gradient(circle,rgba(201,168,76,.15),transparent 70%);
+  pointer-events:none;
+}
+
+/* ─── INDEXED PAPERS ─────────────────────────── */
+.idx-list { display:flex; flex-direction:column; gap:0; }
+.idx-item {
+  display:grid; grid-template-columns:4rem 1fr;
+  border-bottom:1px solid var(--border); padding:1.3rem 0;
+  position:relative; cursor:pointer; transition:background .25s;
+  align-items:start; gap:0;
+}
+.idx-item:first-child { border-top:1px solid var(--border); }
+.idx-item:hover { background:rgba(201,168,76,.04); }
+.idx-num {
+  font-family:'Cinzel',serif;
+  font-size:3.5rem; font-weight:600; line-height:.85;
+  color:var(--border); transition:color .3s;
+  padding-right:1.5rem; text-align:right; user-select:none;
+  padding-top:.2rem;
+}
+.idx-item:hover .idx-num { color:rgba(201,168,76,.28); }
+.idx-item.open .idx-num { color:rgba(201,168,76,.45); }
+.idx-body { padding-right:2rem; }
+.idx-meta {
+  font-family:'Cinzel',serif; font-size:.6rem; letter-spacing:.18em;
+  color:var(--text-dim); text-transform:uppercase;
+  margin-bottom:.3rem; display:flex; gap:1rem; align-items:center;
+}
+.idx-meta .dot { color:var(--gold); font-size:.5rem; }
+.idx-title {
+  font-family:'Cormorant Garamond',serif; font-size:1.1rem;
+  color:var(--text); line-height:1.45;
+  transition:color .25s;
+}
+.idx-item:hover .idx-title { color:var(--gold-light); }
+.idx-journal {
+  font-family:'Cinzel',serif; font-size:.58rem; letter-spacing:.1em;
+  color:var(--accent); text-transform:uppercase; margin-top:.2rem;
+}
+.idx-chevron {
+  font-size:.6rem; color:var(--text-dim); margin-left:auto;
+  align-self:center; transition:transform .3s,color .3s;
+  flex-shrink:0; padding-left:1rem; padding-top:.3rem;
+}
+.idx-item.open .idx-chevron { transform:rotate(180deg); color:var(--gold); }
+.idx-header { display:flex; align-items:flex-start; }
+.idx-expand {
+  max-height:0; overflow:hidden;
+  transition:max-height .4s ease, margin .3s;
+  margin-top:0;
+}
+.idx-item.open .idx-expand { max-height:200px; margin-top:.8rem; }
+.idx-abs {
+  font-family:'Cormorant Garamond',serif; font-style:italic;
+  font-size:.95rem; color:var(--text-dim); line-height:1.75;
+  border-left:2px solid var(--border2); padding-left:1rem;
+}
+.idx-atags { display:flex; gap:.5rem; flex-wrap:wrap; margin-top:.7rem; }
+.atag {
+  font-family:'Cinzel',serif; font-size:.53rem; letter-spacing:.14em;
+  color:var(--gold); border:1px solid var(--border);
+  padding:.12rem .5rem; border-radius:2px; text-transform:uppercase;
+}
+
+/* ─── TIMELINE + AWARDS ───────────────────────── */
+.bottom-grid {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:5rem; margin-top:5.5rem; align-items:start;
+}
+.tl-line {
+  position:relative; padding-left:2.6rem;
+}
+.tl-line::before {
+  content:''; position:absolute; left:.5rem; top:.6rem; bottom:0;
+  width:1px;
+  background:linear-gradient(to bottom,var(--gold),rgba(201,168,76,.05));
+}
+.tl-row {
+  position:relative; margin-bottom:2rem;
+  opacity:0; transform:translateX(-12px);
+  transition:opacity .55s,transform .55s;
+}
+.tl-row.in { opacity:1; transform:none; }
+.tl-pip {
+  position:absolute; left:-2.6rem; top:.45rem;
+  width:10px; height:10px; border-radius:50%;
+  border:1.5px solid var(--gold); background:var(--bg);
+  transition:background .3s;
+}
+.tl-row:hover .tl-pip { background:var(--gold); }
+.tl-yr {
+  font-family:'Cinzel',serif; font-size:.6rem; letter-spacing:.2em;
+  color:var(--gold); text-transform:uppercase;
+}
+.tl-role {
+  font-family:'Cormorant Garamond',serif; font-size:1.1rem;
+  font-weight:500; color:var(--text);
+}
+.tl-where {
+  font-family:'Cormorant Garamond',serif; font-style:italic;
+  font-size:.9rem; color:var(--text-dim);
+}
+.aw-row {
+  display:flex; gap:1.2rem; align-items:flex-start;
+  border:1px solid var(--border); border-radius:4px;
+  padding:1.3rem 1.6rem; margin-bottom:1rem;
+  background:var(--gold-dim); transition:all .3s;
+}
+.aw-row:hover { border-color:var(--border2); background:rgba(201,168,76,.18); }
+.aw-icon { font-size:1.6rem; flex-shrink:0; line-height:1; margin-top:.1rem; }
+.aw-name {
+  font-family:'Cinzel',serif; font-size:.72rem; letter-spacing:.14em;
+  color:var(--gold); text-transform:uppercase; margin-bottom:.2rem;
+}
+.aw-desc {
+  font-family:'Cormorant Garamond',serif; font-style:italic;
+  font-size:.95rem; color:var(--text-dim);
+}
+
+@media(max-width:900px){
+  .metrics{grid-template-columns:1fr 1fr;}
+  .metric:nth-child(2){border-right:none;}
+  .metric:nth-child(1),.metric:nth-child(2){border-bottom:1px solid var(--border);}
+  .bottom-grid{grid-template-columns:1fr;gap:3.5rem;}
+  .feat-paper{padding:2rem 1.8rem;}
+  .idx-item{grid-template-columns:3rem 1fr;}
+  .idx-num{font-size:2.5rem;}
+}
+@media(max-width:600px){
+  .ext-row{flex-direction:column;}
+}
+</style>
+</head>
+<body>
+<div id="stars"></div>
+
+<nav>
+  <a class="nav-logo" href="index.html">S · G</a>
+  <div class="nav-links">
+    <a href="about.html" data-it="Chi sono" data-en="About">Chi sono</a>
+    <a href="publications.html" class="active" data-it="Pubblicazioni" data-en="Publications">Pubblicazioni</a>
+    <a href="research.html" data-it="Ricerca" data-en="Research">Ricerca</a>
+    <a href="teaching.html" data-it="Insegnamento" data-en="Teaching">Insegnamento</a>
+    <a href="passions.html" data-it="Passioni" data-en="Passions">Passioni</a>
+    <a href="contact.html" data-it="Contatti" data-en="Contact">Contatti</a>
+    <button class="lang-btn" id="lang-toggle">EN</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="pub-hero">
+  <div class="hero-eyebrow">Google Scholar · ResearchGate · arXiv</div>
+  <h1 class="hero-title">
+    <em data-it="Pubblicazioni" data-en="Publications">Pubblicazioni</em>
+  </h1>
+  <p class="hero-sub"
+     data-it="~100 pubblicazioni personali. Materia condensata, onde gravitazionali, supernovae a collasso del nucleo. Collaborazione LIGO 2016–2021."
+     data-en="~100 personal publications. Condensed matter, gravitational waves, core-collapse supernovae. LIGO collaboration 2016–2021.">
+    ~100 pubblicazioni personali. Materia condensata, onde gravitazionali, supernovae a collasso del nucleo. Collaborazione LIGO 2016–2021.
+  </p>
+  <div class="hero-rule"></div>
+  <div class="wave-stage">
+    <canvas id="wave-canvas"></canvas>
+  </div>
+</div>
+
+<div class="pub-content">
+
+  <!-- METRICS -->
+  <div class="metrics reveal" style="grid-template-columns:repeat(5,1fr);">
+    <div class="metric">
+      <span class="m-num" id="cnt-pub">0</span>
+      <span class="m-label" data-it="Pubblicazioni personali" data-en="Personal publications">Pubblicazioni personali</span>
+      <span class="m-sub">arXiv · Journals</span>
+    </div>
+    <div class="metric">
+      <span class="m-num" id="cnt-cit">0</span>
+      <span class="m-label" data-it="Citazioni totali" data-en="Total citations">Citazioni totali</span>
+      <span class="m-sub">ResearchGate</span>
+    </div>
+    <div class="metric">
+      <span class="m-num">GW</span>
+      <span class="m-label" data-it="Onde gravitazionali" data-en="Gravitational waves">Onde gravitazionali</span>
+      <span class="m-sub">PTA · LISA · ET</span>
+    </div>
+    <div class="metric">
+      <span class="m-num" style="font-size:1.6rem;">Quantum</span>
+      <span class="m-label" data-it="Sensori quantistici" data-en="Quantum sensors">Sensori quantistici</span>
+      <span class="m-sub">Clocks · Interferometers</span>
+    </div>
+    <div class="metric">
+      <span class="m-num">DM</span>
+      <span class="m-label" data-it="Materia oscura" data-en="Dark matter">Materia oscura</span>
+      <span class="m-sub">Supersolid · Cold atoms</span>
+    </div>
+  </div>
+
+  <!-- LINKS -->
+  <div class="ext-row reveal">
+    <a class="ext-a gold" href="https://scholar.google.com/citations?user=GNegxXwAAAAJ" target="_blank" rel="noopener">⊙ Google Scholar</a>
+    <a class="ext-a ghost" href="https://www.researchgate.net/profile/Sergio-Gaudio-2" target="_blank" rel="noopener">∂ ResearchGate</a>
+    <a class="ext-a ghost" href="https://ligo.academia.edu/SergioGaudio" target="_blank" rel="noopener">✦ Academia.edu</a>
+  </div>
+
+  <!-- FEATURED: GW170817 -->
+  <div class="sec-kicker reveal" data-it="Paper emblematico" data-en="Landmark paper">Paper emblematico</div>
+  <div class="sec-head reveal" data-it="Il segnale <em>più importante</em>" data-en="The <em>most important</em> signal">Il segnale <em>più importante</em></div>
+  <div class="sec-rule"></div>
+
+  <div class="feat-paper reveal">
+    <div class="feat-glow"></div>
+    <div class="feat-badge" data-it="✦ Evento storico multimessaggero · Nobel 2017 a Weiss, Barish &amp; Thorne" data-en="✦ Historic multi-messenger event · Nobel 2017 to Weiss, Barish &amp; Thorne">✦ Evento storico multimessaggero · Nobel 2017 a Weiss, Barish &amp; Thorne</div>
+    <div class="feat-year">Physical Review Letters · 2017</div>
+    <div class="feat-title">GW170817: Observation of Gravitational Waves from a Binary Neutron Star Inspiral</div>
+    <div class="feat-journal">LIGO Scientific Collaboration &amp; Virgo Collaboration</div>
+    <p class="feat-abstract"
+       data-it="Prima osservazione diretta di onde gravitazionali da una fusione di stelle di neutroni. Evento multimessaggero storico: GRB 170817A rilevato da Fermi-GBM 1.7 secondi dopo la coalescenza. Prima evidenza diretta del legame tra fusioni NS-NS e short gamma-ray bursts. Questo evento ha segnato l'alba dell'astronomia multimessaggera."
+       data-en="First direct observation of gravitational waves from a neutron star merger. Historic multi-messenger event: GRB 170817A detected by Fermi-GBM 1.7 seconds after coalescence. First direct evidence linking NS-NS mergers and short gamma-ray bursts. This event marked the dawn of multi-messenger astronomy.">
+      Prima osservazione diretta di onde gravitazionali da una fusione di stelle di neutroni. Evento multimessaggero storico: GRB 170817A rilevato da Fermi-GBM 1.7 secondi dopo la coalescenza. Prima evidenza diretta del legame tra fusioni NS-NS e short gamma-ray bursts. Questo evento ha segnato l'alba dell'astronomia multimessaggera.
+    </p>
+    <div class="feat-tags">
+      <span class="ftag">GW170817</span>
+      <span class="ftag">Neutron Stars</span>
+      <span class="ftag">Multi-messenger</span>
+      <span class="ftag">GRB 170817A</span>
+      <span class="ftag">PRL 2017</span>
+    </div>
+  </div>
+
+  <!-- LIGO PAPERS INDEX -->
+  <div class="sec-kicker reveal" data-it="Selezione · Collaborazione LIGO" data-en="Selection · LIGO Collaboration">Selezione · Collaborazione LIGO</div>
+  <div class="sec-head reveal" data-it="Onde <em>gravitazionali</em>" data-en="Gravitational <em>waves</em>">Onde <em>gravitazionali</em></div>
+  <p class="sec-note reveal"
+     data-it="I paper LIGO portano centinaia di co-autori. Clicca per espandere l'abstract."
+     data-en="LIGO papers carry hundreds of co-authors. Click to expand the abstract.">
+    I paper LIGO portano centinaia di co-autori. Clicca per espandere l'abstract.
+  </p>
+  <div class="sec-rule"></div>
+
+  <div class="idx-list reveal">
+    <div class="idx-item" onclick="toggleIdx(this)">
+      <div class="idx-num">01</div>
+      <div class="idx-body">
+        <div class="idx-header">
+          <div style="flex:1">
+            <div class="idx-meta"><span>2023</span><span class="dot">●</span><span>Physical Review D</span></div>
+            <div class="idx-title" data-it="Ricerca di onde gravitazionali continue — Cassiopeia A e Vela Jr. (O3)" data-en="Search for Continuous Gravitational Waves — Cassiopeia A & Vela Jr. (O3)">Ricerca di onde gravitazionali continue — Cassiopeia A e Vela Jr. (O3)</div>
+            <div class="idx-journal">LIGO Scientific Collaboration</div>
+          </div>
+          <span class="idx-chevron">▼</span>
+        </div>
+        <div class="idx-expand">
+          <p class="idx-abs" data-it="Nessun segnale nella banda 20–976 Hz. Sensibilità fino a ~6.3 × 10⁻²⁶ per Cas A e ~5.6 × 10⁻²⁶ per Vela Jr. a 166 Hz — i risultati più sensibili mai ottenuti su questo spazio parametrico." data-en="No signal in the 20–976 Hz band. Sensitivity down to ~6.3 × 10⁻²⁶ for Cas A and ~5.6 × 10⁻²⁶ for Vela Jr. near 166 Hz — most sensitive results to date.">Nessun segnale nella banda 20–976 Hz. Sensibilità fino a ~6.3 × 10⁻²⁶ per Cas A e ~5.6 × 10⁻²⁶ per Vela Jr. a 166 Hz.</p>
+          <div class="idx-atags"><span class="atag">Supernovae</span><span class="atag">Continuous GW</span><span class="atag">O3</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="idx-item" onclick="toggleIdx(this)">
+      <div class="idx-num">02</div>
+      <div class="idx-body">
+        <div class="idx-header">
+          <div style="flex:1">
+            <div class="idx-meta"><span>2022</span><span class="dot">●</span><span>ApJ</span></div>
+            <div class="idx-title" data-it="GW associate a Fast Radio Bursts CHIME/FRB — O3a" data-en="GWs Associated with CHIME/FRB Fast Radio Bursts — O3a">GW associate a Fast Radio Bursts CHIME/FRB — O3a</div>
+            <div class="idx-journal">LIGO Scientific Collaboration</div>
+          </div>
+          <span class="idx-chevron">▼</span>
+        </div>
+        <div class="idx-expand">
+          <p class="idx-abs" data-it="Nessuna evidenza GW-FRB. Limiti superiori sull'energia emessa: 10⁵¹–10⁵⁷ erg per frequenze 70–3560 Hz." data-en="No GW-FRB association. Upper limits on emitted energy: 10⁵¹–10⁵⁷ erg for frequencies 70–3560 Hz.">Nessuna evidenza GW-FRB. Limiti superiori: 10⁵¹–10⁵⁷ erg per frequenze 70–3560 Hz.</p>
+          <div class="idx-atags"><span class="atag">FRB</span><span class="atag">CHIME</span><span class="atag">O3a</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="idx-item" onclick="toggleIdx(this)">
+      <div class="idx-num">03</div>
+      <div class="idx-body">
+        <div class="idx-header">
+          <div style="flex:1">
+            <div class="idx-meta"><span>2021</span><span class="dot">●</span><span>ApJ</span></div>
+            <div class="idx-title" data-it="Lensing gravitazionale nelle osservazioni GW — O3a" data-en="Gravitational Lensing in GW Observations — O3a">Lensing gravitazionale nelle osservazioni GW — O3a</div>
+            <div class="idx-journal">LIGO Scientific Collaboration</div>
+          </div>
+          <span class="idx-chevron">▼</span>
+        </div>
+        <div class="idx-expand">
+          <p class="idx-abs" data-it="Studio di strong lensing, microlensing e implicazioni per il tasso di fusioni ad alto redshift." data-en="Study of strong lensing, microlensing, and merger rate implications at high redshift.">Studio di strong lensing, microlensing e implicazioni per il tasso di fusioni ad alto redshift.</p>
+          <div class="idx-atags"><span class="atag">Lensing</span><span class="atag">O3a</span><span class="atag">Mergers</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="idx-item" onclick="toggleIdx(this)">
+      <div class="idx-num">04</div>
+      <div class="idx-body">
+        <div class="idx-header">
+          <div style="flex:1">
+            <div class="idx-meta"><span>2020</span><span class="dot">●</span><span>ApJL</span></div>
+            <div class="idx-title">GW190425: Compact Binary Coalescence · Total Mass ∼ 3.4 M⊙</div>
+            <div class="idx-journal">LIGO Scientific Collaboration</div>
+          </div>
+          <span class="idx-chevron">▼</span>
+        </div>
+        <div class="idx-expand">
+          <p class="idx-abs" data-it="Probabile stella di neutroni binaria con massa totale ~3.4 M⊙ — la più massiccia mai osservata in questa categoria." data-en="Likely binary neutron star with total mass ~3.4 M⊙ — most massive such system ever observed.">Probabile sistema NS-NS con massa totale ~3.4 M⊙ — il più massiccio mai osservato.</p>
+          <div class="idx-atags"><span class="atag">GW190425</span><span class="atag">Neutron Star</span><span class="atag">O3</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="idx-item" onclick="toggleIdx(this)">
+      <div class="idx-num">05</div>
+      <div class="idx-body">
+        <div class="idx-header">
+          <div style="flex:1">
+            <div class="idx-meta"><span>2017</span><span class="dot">●</span><span>PRL</span></div>
+            <div class="idx-title">GW170104: 50 M⊙ Binary Black Hole Coalescence at Redshift 0.2</div>
+            <div class="idx-journal">LIGO Scientific Collaboration</div>
+          </div>
+          <span class="idx-chevron">▼</span>
+        </div>
+        <div class="idx-expand">
+          <p class="idx-abs" data-it="Fusione BH ~31+19 M⊙ a z≈0.2 (~3 miliardi di anni luce). Spin disallineati — possibile formazione dinamica." data-en="BH merger ~31+19 M⊙ at z≈0.2 (~3 billion light-years). Misaligned spins — possible dynamical formation.">Fusione BH ~31+19 M⊙ a z≈0.2. Spin disallineati rispetto al momento angolare — possibile formazione dinamica.</p>
+          <div class="idx-atags"><span class="atag">GW170104</span><span class="atag">BBH</span><span class="atag">Spin</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONDENSED MATTER -->
+  <div style="margin-top:5rem;">
+    <div class="sec-kicker reveal" data-it="Materia condensata · Gas di Fermi" data-en="Condensed Matter · Fermi gases">Materia condensata · Gas di Fermi</div>
+    <div class="sec-head reveal" data-it="Fisica dei <em>superfluidi</em>" data-en="Physics of <em>superfluids</em>">Fisica dei <em>superfluidi</em></div>
+    <div class="sec-rule"></div>
+    <div class="idx-list reveal">
+      <div class="idx-item" onclick="toggleIdx(this)">
+        <div class="idx-num">01</div>
+        <div class="idx-body">
+          <div class="idx-header">
+            <div style="flex:1">
+              <div class="idx-meta"><span>2007</span><span class="dot">●</span><span>arXiv cond-mat/0703722</span></div>
+              <div class="idx-title">Fermi Liquid Behavior and Luttinger's Theorem Near a Diverging Scattering Length</div>
+              <div class="idx-journal">Gaudio · Jackiewicz · Bedell — Boston College / La Sapienza Roma</div>
+            </div>
+            <span class="idx-chevron">▼</span>
+          </div>
+          <div class="idx-expand">
+            <p class="idx-abs" data-it="Termodinamica del gas di Fermi nel regime degenere. Transizione di fase del primo ordine nella fase normale se vale il teorema di Luttinger. Volume change finito attraverso la lunghezza di scattering divergente." data-en="Thermodynamics of the Fermi gas in the degenerate regime. First-order phase transition in the normal phase if Luttinger's theorem holds. Finite volume change across the diverging scattering length.">Termodinamica del gas di Fermi degenere. Transizione di primo ordine se vale il teorema di Luttinger. Volume change attraverso la lunghezza di scattering divergente.</p>
+            <div class="idx-atags"><span class="atag">BCS-BEC</span><span class="atag">Luttinger</span><span class="atag">Boston College</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="idx-item" onclick="toggleIdx(this)">
+        <div class="idx-num">02</div>
+        <div class="idx-body">
+          <div class="idx-header">
+            <div style="flex:1">
+              <div class="idx-meta"><span>2005</span><span class="dot">●</span><span>arXiv cond-mat/0505309</span></div>
+              <div class="idx-title" data-it="Termodinamica dei gas di Fermi ultrafreddi — crossover BCS-BEC" data-en="Thermodynamics of Ultracold Fermi Gases — BCS-BEC Crossover">Termodinamica dei gas di Fermi ultrafreddi — crossover BCS-BEC</div>
+              <div class="idx-journal">Boston College · Prof. Kevin Bedell</div>
+            </div>
+            <span class="idx-chevron">▼</span>
+          </div>
+          <div class="idx-expand">
+            <p class="idx-abs" data-it="Lavoro fondante BCS-BEC secondo il formalismo Nozières–Schmitt-Rink. Transizione continua dalla superconduttività alla condensazione di Bose-Einstein in un gas fermionico attrattivo." data-en="Foundational BCS-BEC work using the Nozières–Schmitt-Rink formalism. Continuous transition from superconductivity to Bose-Einstein condensation in an attractive Fermi gas.">Lavoro fondante BCS-BEC secondo Nozières–Schmitt-Rink. Transizione continua dalla superconduttività BCS alla condensazione di Bose-Einstein.</p>
+            <div class="idx-atags"><span class="atag">BCS-BEC</span><span class="atag">NSR</span><span class="atag">Fermi gas</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIMELINE + AWARDS -->
+  <div class="bottom-grid">
+    <div>
+      <div class="sec-kicker reveal" data-it="Percorso" data-en="Career path">Percorso</div>
+      <div class="sec-head reveal"><em>Curriculum</em></div>
+      <div class="sec-rule"></div>
+      <div class="tl-line">
+        <div class="tl-row"><div class="tl-pip"></div>
+          <div class="tl-yr">2001–2006</div>
+          <div class="tl-role">PhD in Physics</div>
+          <div class="tl-where" data-it="Boston College · Prof. Kevin Bedell" data-en="Boston College · Prof. Kevin Bedell">Boston College · Prof. Kevin Bedell</div>
+        </div>
+        <div class="tl-row"><div class="tl-pip"></div>
+          <div class="tl-yr" data-it="Post-PhD" data-en="Post-PhD">Post-PhD</div>
+          <div class="tl-role" data-it="Postdoc — Superfluidi" data-en="Postdoc — Superfluids">Postdoc — Superfluidi</div>
+          <div class="tl-where" data-it="Università La Sapienza, Roma · ISC-CNR" data-en="Università La Sapienza, Rome · ISC-CNR">Università La Sapienza, Roma · ISC-CNR</div>
+        </div>
+        <div class="tl-row"><div class="tl-pip"></div>
+          <div class="tl-yr">UCLA</div>
+          <div class="tl-role" data-it="Fisica medica" data-en="Medical Physics">Fisica medica</div>
+          <div class="tl-where" data-it="Modellizzazione del respiro · applicazioni cliniche" data-en="Breathing motion modeling · clinical applications">Modellizzazione del respiro · applicazioni cliniche</div>
+        </div>
+        <div class="tl-row"><div class="tl-pip"></div>
+          <div class="tl-yr">2016–2021</div>
+          <div class="tl-role">LIGO Collaboration</div>
+          <div class="tl-where" data-it="ERAU · Gruppo Supernovae · Run osservativi O1–O3" data-en="ERAU · Supernovae group · Observing runs O1–O3">ERAU · Gruppo Supernovae · Run osservativi O1–O3</div>
+        </div>
+        <div class="tl-row"><div class="tl-pip"></div>
+          <div class="tl-yr" data-it="Oggi" data-en="Present">Oggi</div>
+          <div class="tl-role">LACC &amp; Pasadena City College</div>
+          <div class="tl-where" data-it="Fisica · Ricerca indipendente" data-en="Physics · Independent research">Fisica · Ricerca indipendente</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="sec-kicker reveal" data-it="Riconoscimenti" data-en="Awards">Riconoscimenti</div>
+      <div class="sec-head reveal" data-it="<em>Premi</em>" data-en="<em>Awards</em>"><em>Premi</em></div>
+      <div class="sec-rule"></div>
+      <div class="aw-row reveal">
+        <div class="aw-icon">🏆</div>
+        <div>
+          <div class="aw-name">Excellence in Research</div>
+          <div class="aw-desc" data-it="Premio Spartenze Foundation · Divulgazione scientifica e ricerca" data-en="Premio Spartenze Foundation · Science communication and research">Premio Spartenze Foundation · Divulgazione scientifica</div>
+        </div>
+      </div>
+      <div class="aw-row reveal">
+        <div class="aw-icon">🎖️</div>
+        <div>
+          <div class="aw-name">Gonfalone</div>
+          <div class="aw-desc" data-it="Città di Palmi, Calabria · Riconoscimento civico alla carriera" data-en="City of Palmi, Calabria · Civic recognition">Città di Palmi, Calabria · Riconoscimento civico</div>
+        </div>
+      </div>
+      <div class="aw-row reveal">
+        <div class="aw-icon">🎙️</div>
+        <div>
+          <div class="aw-name" data-it="Divulgatore scientifico" data-en="Science communicator">Divulgatore scientifico</div>
+          <div class="aw-desc" data-it="Comunicatore di fisica in Italia · Membro della collaborazione LIGO (Nobel 2017 assegnato a Weiss, Barish &amp; Thorne)" data-en="Physics communicator in Italy · Member of LIGO collaboration (Nobel 2017 awarded to Weiss, Barish &amp; Thorne)">Comunicatore di fisica in Italia · Membro della collaborazione LIGO (Nobel 2017 a Weiss, Barish &amp; Thorne)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-copy" data-it="© 2026 Sergio Gaudio. Tutti i diritti riservati." data-en="© 2026 Sergio Gaudio. All rights reserved.">© 2026 Sergio Gaudio. Tutti i diritti riservati.</div>
+  <div class="footer-sig">S · G</div>
+</footer>
+
+<script src="main.js"></script>
+<script>
+/* ── GRAVITATIONAL WAVE CHIRP ── */
+(function(){
+  const c=document.getElementById('wave-canvas');
+  if(!c)return;
+  const ctx=c.getContext('2d');
+  let t=0;
+  function resize(){c.width=c.offsetWidth;c.height=c.offsetHeight;}
+  resize();window.addEventListener('resize',resize);
+  function draw(){
+    ctx.clearRect(0,0,c.width,c.height);
+    const h=c.height,w=c.width;
+    // Three overlapping chirps at different phases
+    [[0,1],[0.4,0.6],[0.8,0.3]].forEach(([phOff,opMult])=>{
+      ctx.beginPath();
+      for(let x=0;x<=w;x++){
+        const p=x/w;
+        const freq=0.012+p*0.22;
+        const env=Math.sin(p*Math.PI)*h*0.38*(0.15+p*0.85);
+        const y=h/2+env*Math.sin(2*Math.PI*freq*(x-t*50)+phOff*20);
+        x===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+      }
+      const g=ctx.createLinearGradient(0,0,w,0);
+      g.addColorStop(0,'rgba(201,168,76,0)');
+      g.addColorStop(0.3,'rgba(201,168,76,'+(0.55*opMult)+')');
+      g.addColorStop(0.65,'rgba(74,143,168,'+(0.7*opMult)+')');
+      g.addColorStop(1,'rgba(74,143,168,0)');
+      ctx.strokeStyle=g;
+      ctx.lineWidth=opMult===1?2:1;
+      ctx.stroke();
+    });
+    t+=0.011;requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* ── ANIMATED COUNTERS ── */
+function animCount(el,target,suffix,duration){
+  let start=null;
+  function step(ts){
+    if(!start)start=ts;
+    const p=Math.min((ts-start)/duration,1);
+    const ease=1-Math.pow(1-p,3);
+    el.textContent=Math.round(ease*target)+suffix;
+    if(p<1)requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+const metricsEl=document.querySelector('.metrics');
+let counted=false;
+const cObs=new IntersectionObserver(entries=>{
+  if(entries[0].isIntersecting&&!counted){
+    counted=true;
+    animCount(document.getElementById('cnt-pub'),100,'~',1200);
+    animCount(document.getElementById('cnt-cit'),84,'K+',1600);
+  }
+},{threshold:0.4});
+cObs.observe(metricsEl);
+
+/* ── PAPER TOGGLE ── */
+function toggleIdx(el){
+  const open=el.classList.contains('open');
+  document.querySelectorAll('.idx-item.open').forEach(p=>p.classList.remove('open'));
+  if(!open)el.classList.add('open');
+}
+
+/* ── TIMELINE STAGGER ── */
+const tlObs=new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting)setTimeout(()=>e.target.classList.add('in'),i*110);
+  });
+},{threshold:0.1});
+document.querySelectorAll('.tl-row').forEach(el=>tlObs.observe(el));
+</script>
+</body>
+</html>

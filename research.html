@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="it" data-lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ricerca — Sergio Gaudio</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.research-intro { max-width:700px; margin-bottom:3.5rem; }
+.research-intro p { color:var(--text-dim); margin-bottom:1rem; }
+.project-full {
+  border:1px solid var(--border);
+  background:linear-gradient(140deg,rgba(15,24,40,0.85),rgba(7,11,18,0.95));
+  border-radius:4px; margin-bottom:2rem; overflow:hidden;
+  transition:border-color 0.3s;
+}
+.project-full:hover { border-color:var(--border2); }
+.project-header {
+  display:flex; align-items:flex-start; gap:1.5rem;
+  padding:2rem 2rem 1.5rem; border-bottom:1px solid var(--border);
+  position:relative;
+}
+.project-header::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:2px;
+  background:linear-gradient(to right,var(--gold),var(--accent));
+}
+.project-icon { font-size:2rem; flex-shrink:0; margin-top:0.2rem; }
+.project-meta { flex:1; }
+.project-title {
+  font-family:'Cormorant Garamond',serif; font-size:1.5rem; font-weight:600;
+  color:var(--gold-light); margin-bottom:0.3rem;
+}
+.project-journal {
+  font-family:'Cinzel',serif; font-size:0.72rem; letter-spacing:0.1em;
+  color:var(--accent); margin-bottom:0.5rem;
+}
+.project-tags { display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:0.6rem; }
+.p-tag {
+  font-family:'Cinzel',serif; font-size:0.58rem; letter-spacing:0.15em;
+  color:var(--gold); border:1px solid var(--border); padding:0.15rem 0.6rem;
+  border-radius:2px; text-transform:uppercase;
+}
+.project-body { padding:1.8rem 2rem; }
+.project-body p { color:var(--text-dim); margin-bottom:1rem; line-height:1.78; }
+.project-body p:last-child { margin-bottom:0; }
+.project-detail {
+  border-left:2px solid var(--border2); padding-left:1.2rem;
+  margin:1.2rem 0; font-family:'Cormorant Garamond',serif;
+  font-style:italic; color:var(--text-dim); font-size:1rem;
+}
+.project-status {
+  display:inline-flex; align-items:center; gap:0.5rem;
+  font-family:'Cinzel',serif; font-size:0.62rem; letter-spacing:0.18em;
+  color:var(--gold); text-transform:uppercase;
+  background:var(--gold-dim); border:1px solid var(--border2);
+  padding:0.25rem 0.8rem; border-radius:2px; margin-top:1rem;
+}
+.status-dot { width:6px; height:6px; border-radius:50%; background:var(--gold); animation:pulse 2s ease-in-out infinite; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:0.4;transform:scale(0.8);} }
+</style>
+</head>
+<body>
+<div id="stars"></div>
+
+<nav>
+  <a class="nav-logo" href="index.html">S · G</a>
+  <div class="nav-links">
+    <a href="about.html" data-it="Chi sono" data-en="About">Chi sono</a>
+    <a href="publications.html" data-it="Pubblicazioni" data-en="Publications">Pubblicazioni</a>
+    <a href="research.html" class="active" data-it="Ricerca" data-en="Research">Ricerca</a>
+    <a href="teaching.html" data-it="Insegnamento" data-en="Teaching">Insegnamento</a>
+    <a href="passions.html" data-it="Passioni" data-en="Passions">Passioni</a>
+    <a href="contact.html" data-it="Contatti" data-en="Contact">Contatti</a>
+    <button class="lang-btn" id="lang-toggle">EN</button>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-eyebrow" data-it="Progetti attivi" data-en="Active projects">Progetti attivi</div>
+  <h1 class="page-title" data-it="<span>Ricerca</span>" data-en="<span>Research</span>"><span>Ricerca</span></h1>
+  <p class="page-subtitle"
+     data-it="Onde gravitazionali, massa del gravitone, supernovae, superfluidi, sensori quantistici — e un libro sui buchi neri per mia figlia."
+     data-en="Gravitational waves, graviton mass, supernovae, superfluids, quantum sensors — and a book about black holes for my daughter.">
+    Onde gravitazionali, massa del gravitone, supernovae, superfluidi, sensori quantistici — e un libro sui buchi neri per mia figlia.
+  </p>
+  <div class="page-rule"></div>
+</div>
+
+<div class="page-content">
+
+  <!-- GRAVITON -->
+  <div class="project-full reveal">
+    <div class="project-header">
+      <div class="project-icon">🌌</div>
+      <div class="project-meta">
+        <div class="project-title" data-it="Quanto pesa la gravità?" data-en="How Heavy Is Gravity?">Quanto pesa la gravità?</div>
+        <div class="project-journal">Physical Review D &amp; Physical Review Letters</div>
+        <div class="project-tags">
+          <span class="p-tag">NANOGrav</span><span class="p-tag">MCMC</span>
+          <span class="p-tag">LISA</span><span class="p-tag">Einstein Telescope</span>
+          <span class="p-tag">Bayesian</span>
+        </div>
+      </div>
+    </div>
+    <div class="project-body">
+      <p data-it="Un progetto in due atti dedicato alla massa del gravitone — il bosone mediatore della forza gravitazionale. Se il gravitone ha massa, anche minima, le onde gravitazionali si propagano a velocità inferiori a c e mostrano una dispersione dipendente dalla frequenza. Questo effetto, cumulato su distanze cosmologiche, è misurabile."
+         data-en="A project in two acts dedicated to the graviton mass — the boson mediating the gravitational force. If the graviton has even a tiny mass, gravitational waves propagate at speeds below c and exhibit frequency-dependent dispersion. This effect, accumulated over cosmological distances, is measurable.">
+        Un progetto in due atti dedicato alla massa del gravitone — il bosone mediatore della forza gravitazionale. Se il gravitone ha massa, anche minima, le onde gravitazionali si propagano a velocità inferiori a c e mostrano una dispersione dipendente dalla frequenza. Questo effetto, cumulato su distanze cosmologiche, è misurabile.
+      </p>
+      <div class="project-detail" data-it="Atto I — PRD: Analisi bayesiana MCMC completa dei dati reali NANOGrav 15 anni (Zenodo 8067506, v1p1_all_dict.json). Modifica della funzione di correlazione di Hellings-Downs con il termine di dispersione del gravitone massiccio. Target: m_g &lt; 7.1 × 10⁻²⁴ eV al 95% CL." data-en="Act I — PRD: Full Bayesian MCMC analysis of real NANOGrav 15-year data (Zenodo 8067506, v1p1_all_dict.json). Modified Hellings-Downs correlation with massive graviton dispersion term. Target: m_g &lt; 7.1 × 10⁻²⁴ eV at 95% CL.">Atto I — PRD: Analisi bayesiana MCMC completa dei dati reali NANOGrav 15 anni (Zenodo 8067506). Modifica della funzione di correlazione di Hellings-Downs con il termine di dispersione del gravitone massiccio. Target: m<sub>g</sub> &lt; 7.1 × 10⁻²⁴ eV al 95% CL.</div>
+      <div class="project-detail" data-it="Atto II — PRL: Framework multiband PTA+LISA+ET per vincolare la massa del gravitone e dei mediatori scalari su 9 decadi di frequenza — dal pulsar timing (nHz) alle interferometrie spaziali (mHz) e terrestri (Hz-kHz). Proiezioni di sensitività e complementarità tra osservatori di prossima generazione." data-en="Act II — PRL: Multiband PTA+LISA+ET framework to constrain graviton and scalar mediator mass across 9 frequency decades — from pulsar timing (nHz) to space-based (mHz) and ground-based (Hz-kHz) interferometers. Sensitivity projections and complementarity between next-generation observatories.">Atto II — PRL: Framework multiband PTA+LISA+ET per vincolare la massa del gravitone su 9 decadi di frequenza — dal pulsar timing (nHz) alle interferometrie spaziali (mHz) e terrestri (Hz-kHz).</div>
+      <div class="project-status">
+        <div class="status-dot"></div>
+        <span data-it="In lavorazione" data-en="In progress">In lavorazione</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUANTUM SENSORS -->
+  <div class="project-full reveal">
+    <div class="project-header">
+      <div class="project-icon">⚛️</div>
+      <div class="project-meta">
+        <div class="project-title" data-it="Sensori quantistici per onde gravitazionali" data-en="Quantum Sensors for Gravitational Waves">Sensori quantistici per onde gravitazionali</div>
+        <div class="project-journal">LIGO · LISA · Quantum Physics</div>
+        <div class="project-tags">
+          <span class="p-tag">Atom Interferometry</span><span class="p-tag">Squeezing</span>
+          <span class="p-tag">LISA</span><span class="p-tag">Quantum Noise</span><span class="p-tag">AI Control</span>
+        </div>
+      </div>
+    </div>
+    <div class="project-body">
+      <p data-it="Studio dell'integrazione di sensori quantistici negli osservatori di onde gravitazionali spaziali e terrestri. Le tecnologie quantistiche — orologi atomici, interferometri atomici e sistemi optomeccanici — offrono vie per superare i limiti di rumore quantistico standard degli interferometri laser attuali."
+         data-en="Study of quantum sensor integration into space-based and ground-based gravitational wave observatories. Quantum technologies — atomic clocks, atom interferometers, and optomechanical systems — offer pathways beyond the standard quantum noise limits of current laser interferometers.">
+        Studio dell'integrazione di sensori quantistici negli osservatori di onde gravitazionali spaziali e terrestri. Le tecnologie quantistiche — orologi atomici, interferometri atomici e sistemi optomeccanici — offrono vie per superare i limiti di rumore quantistico standard degli interferometri laser attuali.
+      </p>
+      <div class="project-detail" data-it="Il frequency-dependent squeezing implementato in Advanced LIGO ha già raggiunto una riduzione del rumore quantistico di 5.8 dB. Sistemi AI di controllo come Deep Loop Shaping forniscono una soppressione del rumore 30–100× superiore rispetto ai metodi classici." data-en="Frequency-dependent squeezing implemented in Advanced LIGO has already achieved 5.8 dB of quantum noise reduction. AI control systems such as Deep Loop Shaping provide 30–100× noise suppression compared to classical methods.">Il frequency-dependent squeezing implementato in Advanced LIGO ha già raggiunto una riduzione del rumore quantistico di 5.8 dB. Sistemi AI di controllo forniscono soppressione del rumore 30–100× superiore ai metodi classici.</div>
+      <div class="project-status">
+        <div class="status-dot"></div>
+        <span data-it="In lavorazione" data-en="In progress">In lavorazione</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PYSNOVA -->
+  <div class="project-full reveal">
+    <div class="project-header">
+      <div class="project-icon">💥</div>
+      <div class="project-meta">
+        <div class="project-title">PySNova</div>
+        <div class="project-journal" data-it="Simulazione GPU — Astrofisica computazionale" data-en="GPU Simulation — Computational Astrophysics">Simulazione GPU — Astrofisica computazionale</div>
+        <div class="project-tags">
+          <span class="p-tag">CUDA 12.9</span><span class="p-tag">CuPy 13.6</span>
+          <span class="p-tag">HLL Solver</span><span class="p-tag">LS220</span><span class="p-tag">SFHo</span>
+        </div>
+      </div>
+    </div>
+    <div class="project-body">
+      <p data-it="PySNova è una simulazione 1D GPU-accelerata di supernovae a collasso del nucleo, sviluppata in Python con CUDA 12.9 e CuPy 13.6. Il codice implementa un solutore HLL (Harten-Lax-van Leer) per le equazioni idrodynamiche relativistiche con equazioni di stato termodinamiche realistiche."
+         data-en="PySNova is a 1D GPU-accelerated core-collapse supernova simulation developed in Python with CUDA 12.9 and CuPy 13.6. The code implements an HLL (Harten-Lax-van Leer) solver for relativistic hydrodynamic equations with realistic thermodynamic equations of state.">
+        PySNova è una simulazione 1D GPU-accelerata di supernovae a collasso del nucleo, sviluppata in Python con CUDA 12.9 e CuPy 13.6. Il codice implementa un solutore HLL per le equazioni idrodinamiche relativistiche con equazioni di stato termodinamiche realistiche.
+      </p>
+      <div class="project-detail" data-it="Equazioni di stato LS220 e SFHo scaricate da stellarcollapse.org. Prestazioni attuali: ~34.000 aggiornamenti di zona/secondo. L'ambiente conda supernova (Python 3.11) garantisce riproducibilità completa." data-en="LS220 and SFHo equations of state from stellarcollapse.org. Current performance: ~34,000 zone-updates/second. The conda supernova environment (Python 3.11) ensures full reproducibility.">Equazioni di stato LS220 e SFHo (stellarcollapse.org). Prestazioni: ~34.000 zone-update/sec. Ambiente conda supernova, Python 3.11.</div>
+      <div class="project-status">
+        <div class="status-dot"></div>
+        <span data-it="Sviluppo attivo" data-en="Active development">Sviluppo attivo</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- BCS-BEC -->
+  <div class="project-full reveal">
+    <div class="project-header">
+      <div class="project-icon">🌊</div>
+      <div class="project-meta">
+        <div class="project-title" data-it="Crossover BCS-BEC" data-en="BCS-BEC Crossover">Crossover BCS-BEC</div>
+        <div class="project-journal" data-it="Materia condensata · Superfluidi" data-en="Condensed Matter · Superfluids">Materia condensata · Superfluidi</div>
+        <div class="project-tags">
+          <span class="p-tag">NSR 1985</span><span class="p-tag">BEC</span>
+          <span class="p-tag">BCS</span><span class="p-tag">Python</span><span class="p-tag">Regularization</span>
+        </div>
+      </div>
+    </div>
+    <div class="project-body">
+      <p data-it="Implementazione numerica del crossover BCS-BEC seguendo Nozières e Schmitt-Rink (1985). Il progetto studia la transizione continua da superconduttività BCS a condensazione di Bose-Einstein in un gas fermionico con interazione attrattiva, al variare della forza di accoppiamento."
+         data-en="Numerical implementation of the BCS-BEC crossover following Nozières and Schmitt-Rink (1985). The project studies the smooth transition from BCS superconductivity to Bose-Einstein condensation in an attractive Fermi gas as the coupling strength varies.">
+        Implementazione numerica del crossover BCS-BEC seguendo Nozières–Schmitt-Rink (1985). Transizione continua da superconduttività BCS a condensazione di Bose-Einstein in un gas fermionico con interazione attrattiva, al variare della forza di accoppiamento.
+      </p>
+      <div class="project-detail" data-it="Attenzione particolare alle regolarizzazioni numeriche necessarie per il potenziale separabile e confronto quantitativo con i risultati del paper originale. Il limite BCS e il limite BEC emergono naturalmente dallo stesso formalismo." data-en="Special attention to the numerical regularizations required for the separable potential, with quantitative comparison against the original paper's results. The BCS and BEC limits emerge naturally from the same formalism.">Attenzione particolare alle regolarizzazioni numeriche per il potenziale separabile. I limiti BCS e BEC emergono naturalmente dallo stesso formalismo.</div>
+      <div class="project-status">
+        <div class="status-dot"></div>
+        <span data-it="In lavorazione" data-en="In progress">In lavorazione</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROBIN -->
+  <div class="project-full reveal">
+    <div class="project-header">
+      <div class="project-icon">📖</div>
+      <div class="project-meta">
+        <div class="project-title" data-it="Buchi Neri — per Robin" data-en="Black Holes — for Robin">Buchi Neri — per Robin</div>
+        <div class="project-journal" data-it="Libro di divulgazione scientifica" data-en="Popular Science Book">Libro di divulgazione scientifica</div>
+        <div class="project-tags">
+          <span class="p-tag">Divulgazione</span><span class="p-tag">Hawking</span>
+          <span class="p-tag">Entropia</span><span class="p-tag">Paradosso informazione</span>
+        </div>
+      </div>
+    </div>
+    <div class="project-body">
+      <p data-it="Un libro scritto per mia figlia Robin. Il punto di partenza è il Secondo Principio della Termodinamica e il concetto di entropia — un'idea che sembra astratta ma governa tutto, dal vapore nelle macchine a vapore alla freccia del tempo. Da lì, il percorso porta ai buchi neri: oggetti così densi che nemmeno la luce può sfuggire, eppure oggetti con una temperatura, un'entropia, una vita finita."
+         data-en="A book written for my daughter Robin. The starting point is the Second Law of Thermodynamics and the concept of entropy — an idea that seems abstract but governs everything, from steam engines to the arrow of time. From there, the path leads to black holes: objects so dense that not even light can escape, yet objects with a temperature, an entropy, a finite life.">
+        Un libro scritto per mia figlia Robin. Il punto di partenza è il Secondo Principio e il concetto di entropia. Da lì, il percorso porta ai buchi neri: oggetti così densi che nemmeno la luce può sfuggire, eppure dotati di temperatura, entropia e vita finita.
+      </p>
+      <div class="project-detail" data-it="La radiazione di Hawking, il paradosso dell'informazione, il principio olografico. Fisica profonda raccontata con gli occhi di chi guarda l'universo per la prima volta — senza perdere il rigore." data-en="Hawking radiation, the information paradox, the holographic principle. Deep physics told through the eyes of someone seeing the universe for the very first time — without sacrificing rigor.">La radiazione di Hawking, il paradosso dell'informazione, il principio olografico. Fisica profonda raccontata con gli occhi di chi guarda l'universo per la prima volta.</div>
+      <div class="project-status" style="background:rgba(201,168,76,0.2);border-color:var(--gold);">
+        <div class="status-dot" style="background:var(--gold-light);"></div>
+        <span data-it="Completato ✦" data-en="Completed ✦">Completato ✦</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-copy" data-it="© 2026 Sergio Gaudio. Tutti i diritti riservati." data-en="© 2026 Sergio Gaudio. All rights reserved.">© 2026 Sergio Gaudio. Tutti i diritti riservati.</div>
+  <div class="footer-sig">S · G</div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

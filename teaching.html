@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="it" data-lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insegnamento — Sergio Gaudio</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.institutions { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:2rem; margin-bottom:4rem; }
+.inst-card {
+  border:1px solid var(--border); border-radius:4px; overflow:hidden;
+  transition:border-color 0.3s;
+}
+.inst-card:hover { border-color:var(--border2); }
+.inst-header {
+  padding:1.8rem 2rem 1.4rem; border-bottom:1px solid var(--border);
+  position:relative;
+  background:linear-gradient(135deg,rgba(15,24,40,0.9),rgba(7,11,18,0.95));
+}
+.inst-header::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:2px;
+  background:linear-gradient(to right,var(--gold),var(--accent));
+}
+.inst-flag { font-size:1.4rem; margin-bottom:0.6rem; }
+.inst-name {
+  font-family:'Cinzel',serif; font-size:0.95rem; letter-spacing:0.14em;
+  color:var(--gold); margin-bottom:0.2rem;
+}
+.inst-city {
+  font-family:'Cormorant Garamond',serif; font-size:0.9rem;
+  color:var(--text-dim); font-style:italic;
+}
+.inst-body { padding:1.5rem 2rem; }
+.inst-label {
+  font-family:'Cinzel',serif; font-size:0.62rem; letter-spacing:0.25em;
+  color:var(--accent); text-transform:uppercase; margin-bottom:0.6rem;
+}
+
+/* Philosophy section */
+.philosophy {
+  border:1px solid var(--border); border-radius:4px; padding:2.5rem 2.2rem;
+  margin-top:1rem; background:var(--gold-dim);
+}
+.phil-text {
+  font-family:'Cormorant Garamond',serif; font-size:1.15rem;
+  font-style:italic; color:var(--text); line-height:1.8; margin-bottom:1rem;
+}
+.phil-text:last-child { margin-bottom:0; }
+
+/* Materials section */
+.materials-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1.2rem; margin-top:0.5rem; }
+.mat-item {
+  border:1px solid var(--border); border-radius:4px; padding:1.2rem 1.4rem;
+  display:flex; align-items:flex-start; gap:0.9rem;
+  background:linear-gradient(140deg,rgba(15,24,40,0.6),rgba(7,11,18,0.8));
+  transition:border-color 0.3s;
+}
+.mat-item:hover { border-color:var(--border2); }
+.mat-icon { font-size:1.2rem; flex-shrink:0; }
+.mat-info {}
+.mat-title {
+  font-family:'Cormorant Garamond',serif; font-size:1rem; font-weight:500;
+  color:var(--text); margin-bottom:0.2rem;
+}
+.mat-desc { font-size:0.88rem; color:var(--text-dim); font-style:italic; }
+
+@media(max-width:700px){
+  .institutions{ grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+<div id="stars"></div>
+
+<nav>
+  <a class="nav-logo" href="index.html">S · G</a>
+  <div class="nav-links">
+    <a href="about.html" data-it="Chi sono" data-en="About">Chi sono</a>
+    <a href="publications.html" data-it="Pubblicazioni" data-en="Publications">Pubblicazioni</a>
+    <a href="research.html" data-it="Ricerca" data-en="Research">Ricerca</a>
+    <a href="teaching.html" class="active" data-it="Insegnamento" data-en="Teaching">Insegnamento</a>
+    <a href="passions.html" data-it="Passioni" data-en="Passions">Passioni</a>
+    <a href="contact.html" data-it="Contatti" data-en="Contact">Contatti</a>
+    <button class="lang-btn" id="lang-toggle">EN</button>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-eyebrow" data-it="Didattica" data-en="Didactics">Didattica</div>
+  <h1 class="page-title" data-it="<span>Insegnamento</span>" data-en="<span>Teaching</span>"><span>Insegnamento</span></h1>
+  <p class="page-subtitle"
+     data-it="Fisica e matematica tra California e Italia. Tre istituzioni, due lingue, una sola idea di cosa significhi insegnare davvero."
+     data-en="Physics and mathematics between California and Italy. Three institutions, two languages, one idea of what it truly means to teach.">
+    Fisica e matematica tra California e Italia. Tre istituzioni, due lingue, una sola idea di cosa significhi insegnare davvero.
+  </p>
+  <div class="page-rule"></div>
+</div>
+
+<div class="page-content">
+
+  <!-- INSTITUTIONS -->
+  <div class="s-label reveal" data-it="Istituzioni" data-en="Institutions">Istituzioni</div>
+  <h2 class="s-title reveal" data-it="Dove <em>insegno</em>" data-en="Where I <em>teach</em>">Dove <em>insegno</em></h2>
+  <div class="s-rule"></div>
+
+  <div class="institutions">
+
+    <div class="inst-card reveal">
+      <div class="inst-header">
+        <div class="inst-flag">🇺🇸</div>
+        <div class="inst-name">Los Angeles City College</div>
+        <div class="inst-city">Los Angeles, California</div>
+      </div>
+      <div class="inst-body">
+        <div class="inst-label" data-it="Corsi" data-en="Courses">Corsi</div>
+        <ul class="course-list">
+          <li data-it="Termodinamica" data-en="Thermodynamics">Termodinamica</li>
+          <li data-it="Teoria elettromagnetica" data-en="Electromagnetic Theory">Teoria elettromagnetica</li>
+          <li data-it="Fisica moderna" data-en="Modern Physics">Fisica moderna</li>
+          <li data-it="Laboratori sperimentali" data-en="Experimental Labs">Laboratori sperimentali</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="inst-card reveal">
+      <div class="inst-header">
+        <div class="inst-flag">🇺🇸</div>
+        <div class="inst-name">Pasadena City College</div>
+        <div class="inst-city">Pasadena, California</div>
+      </div>
+      <div class="inst-body">
+        <div class="inst-label" data-it="Corsi" data-en="Courses">Corsi</div>
+        <ul class="course-list">
+          <li data-it="Fisica generale" data-en="General Physics">Fisica generale</li>
+          <li data-it="Termodinamica e onde" data-en="Thermodynamics & Waves">Termodinamica e onde</li>
+          <li data-it="Elettromagnetismo" data-en="Electromagnetism">Elettromagnetismo</li>
+          <li data-it="Laboratori di fisica" data-en="Physics Labs">Laboratori di fisica</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="inst-card reveal">
+      <div class="inst-header">
+        <div class="inst-flag">🇮🇹</div>
+        <div class="inst-name" data-it="Istituto Tecnico Agrario" data-en="Technical Agricultural Institute">Istituto Tecnico Agrario</div>
+        <div class="inst-city" data-it="Italia" data-en="Italy">Italia</div>
+      </div>
+      <div class="inst-body">
+        <div class="inst-label" data-it="Corsi" data-en="Courses">Corsi</div>
+        <ul class="course-list">
+          <li data-it="Matematica (classi 1ª–4ª)" data-en="Mathematics (Years 1–4)">Matematica (classi 1ª–4ª)</li>
+          <li data-it="Fisica" data-en="Physics">Fisica</li>
+          <li data-it="Trigonometria e calcolo" data-en="Trigonometry & Calculus">Trigonometria e calcolo</li>
+          <li data-it="Termodinamica applicata" data-en="Applied Thermodynamics">Termodinamica applicata</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PHILOSOPHY -->
+  <div class="s-label reveal" data-it="Filosofia didattica" data-en="Teaching Philosophy">Filosofia didattica</div>
+  <h2 class="s-title reveal" data-it="Come <em>insegno</em>" data-en="How I <em>teach</em>">Come <em>insegno</em></h2>
+  <div class="s-rule"></div>
+
+  <div class="philosophy reveal">
+    <p class="phil-text"
+       data-it="La fisica non si impara guardando equazioni alla lavagna. Si impara quando il corpo capisce prima della mente — quando vedi che una pallina lanciata in aria descrive una parabola e poi ti chiedi perché. Il mio compito è creare quel momento di meraviglia, e poi dare gli strumenti per trasformarlo in comprensione."
+       data-en="Physics is not learned by watching equations on a blackboard. It is learned when the body understands before the mind — when you see a ball thrown in the air trace a parabola and then ask yourself why. My task is to create that moment of wonder, and then provide the tools to transform it into understanding.">
+      La fisica non si impara guardando equazioni alla lavagna. Si impara quando il corpo capisce prima della mente — quando vedi che una pallina lanciata in aria descrive una parabola e poi ti chiedi perché. Il mio compito è creare quel momento di meraviglia, e poi dare gli strumenti per trasformarlo in comprensione.
+    </p>
+    <p class="phil-text"
+       data-it="Insegno con lo stesso rigore in California e in Italia, con studenti di età e contesti molto diversi. La matematica non cambia. Ciò che cambia è il modo in cui la si avvicina — e quella distanza, tra lo studente e l'idea, è lo spazio dove avviene l'insegnamento."
+       data-en="I teach with the same rigor in California and in Italy, to students of very different ages and backgrounds. Mathematics does not change. What changes is the way one approaches it — and that distance, between the student and the idea, is the space where teaching happens.">
+      Insegno con lo stesso rigore in California e in Italia, con studenti di età e contesti molto diversi. La matematica non cambia. Ciò che cambia è il modo in cui la si avvicina — e quella distanza, tra lo studente e l'idea, è lo spazio dove avviene l'insegnamento.
+    </p>
+  </div>
+
+  <!-- MATERIALS -->
+  <div style="margin-top:4rem;">
+    <div class="s-label reveal" data-it="Materiali didattici" data-en="Teaching Materials">Materiali didattici</div>
+    <h2 class="s-title reveal" data-it="Cosa <em>produco</em>" data-en="What I <em>create</em>">Cosa <em>produco</em></h2>
+    <div class="s-rule"></div>
+    <div class="materials-grid">
+      <div class="mat-item reveal">
+        <div class="mat-icon">📐</div>
+        <div class="mat-info">
+          <div class="mat-title" data-it="Verifiche e test" data-en="Assessments & Tests">Verifiche e test</div>
+          <div class="mat-desc" data-it="Con accomodamenti DSA/BES, stelle di difficoltà ★" data-en="With DSA/BES accommodations, difficulty stars ★">Con accomodamenti DSA/BES, stelle di difficoltà ★</div>
+        </div>
+      </div>
+      <div class="mat-item reveal">
+        <div class="mat-icon">📊</div>
+        <div class="mat-info">
+          <div class="mat-title" data-it="Simulazioni interattive" data-en="Interactive Simulations">Simulazioni interattive</div>
+          <div class="mat-desc" data-it="HTML5, buchi neri, termodinamica, entropia" data-en="HTML5, black holes, thermodynamics, entropy">HTML5, buchi neri, termodinamica, entropia</div>
+        </div>
+      </div>
+      <div class="mat-item reveal">
+        <div class="mat-icon">📄</div>
+        <div class="mat-info">
+          <div class="mat-title" data-it="Appunti e dispense" data-en="Lecture Notes">Appunti e dispense</div>
+          <div class="mat-desc" data-it="LaTeX e OMML, formule vere, tipografia Cambria" data-en="LaTeX and OMML, true formulae, Cambria typography">LaTeX e OMML, formule vere, tipografia Cambria</div>
+        </div>
+      </div>
+      <div class="mat-item reveal">
+        <div class="mat-icon">🔬</div>
+        <div class="mat-info">
+          <div class="mat-title" data-it="Laboratori virtuali" data-en="Virtual Labs">Laboratori virtuali</div>
+          <div class="mat-desc" data-it="Secondo principio, onde gravitazionali, ottica" data-en="Second law, gravitational waves, optics">Secondo principio, onde gravitazionali, ottica</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-copy" data-it="© 2026 Sergio Gaudio. Tutti i diritti riservati." data-en="© 2026 Sergio Gaudio. All rights reserved.">© 2026 Sergio Gaudio. Tutti i diritti riservati.</div>
+  <div class="footer-sig">S · G</div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

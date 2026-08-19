@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="it" data-lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chi sono — Sergio Gaudio</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.bio-grid {
+  display:grid; grid-template-columns:1.5fr 1fr;
+  gap:5rem; align-items:start; margin-bottom:5rem;
+}
+.bio-text p {
+  font-family:'Cormorant Garamond',serif; font-size:1.12rem;
+  color:var(--text); line-height:1.9; margin-bottom:1.4rem;
+}
+.bio-text p:last-child { margin-bottom:0; }
+.bio-text em { color:var(--gold); font-style:italic; }
+
+.bio-aside {
+  border-left:1px solid var(--border2); padding-left:2rem;
+  position:sticky; top:7rem;
+}
+.aside-block { margin-bottom:2rem; }
+.aside-label {
+  font-family:'Cinzel',serif; font-size:0.65rem; letter-spacing:0.3em;
+  color:var(--gold); text-transform:uppercase; margin-bottom:0.5rem;
+}
+.aside-val {
+  font-family:'Cormorant Garamond',serif; font-size:1rem;
+  color:var(--text-dim); font-style:italic; line-height:1.7;
+}
+
+/* Timeline */
+.cv-section { margin-top:5rem; }
+.cv-head {
+  font-family:'Cinzel',serif; font-size:0.68rem; letter-spacing:0.35em;
+  color:var(--gold); text-transform:uppercase; margin-bottom:0.4rem;
+}
+.cv-title {
+  font-family:'Cormorant Garamond',serif; font-size:clamp(1.6rem,3vw,2.4rem);
+  font-weight:300; color:var(--text); margin-bottom:0.3rem;
+}
+.cv-title em { color:var(--gold); font-style:italic; }
+.cv-rule { width:50px; height:1px; background:linear-gradient(to right,var(--gold),transparent); margin:1.2rem 0 2.5rem; }
+
+.timeline { position:relative; padding-left:2.8rem; }
+.timeline::before {
+  content:''; position:absolute; left:0.6rem; top:0.5rem; bottom:0.5rem;
+  width:1px; background:linear-gradient(to bottom,var(--gold),rgba(201,168,76,0.05));
+}
+.tl-item {
+  position:relative; margin-bottom:2.5rem;
+  opacity:0; transform:translateX(-14px);
+  transition:opacity 0.55s ease, transform 0.55s ease;
+}
+.tl-item.in { opacity:1; transform:none; }
+.tl-dot {
+  position:absolute; left:-2.8rem; top:0.45rem;
+  width:11px; height:11px; border-radius:50%;
+  border:2px solid var(--gold); background:var(--bg); transition:background 0.3s;
+}
+.tl-item:hover .tl-dot { background:var(--gold); }
+.tl-yr {
+  font-family:'Cinzel',serif; font-size:0.65rem; letter-spacing:0.2em;
+  color:var(--gold); text-transform:uppercase; margin-bottom:0.15rem;
+}
+.tl-role {
+  font-family:'Cormorant Garamond',serif; font-size:1.15rem;
+  font-weight:500; color:var(--text); margin-bottom:0.12rem;
+}
+.tl-where {
+  font-family:'Cormorant Garamond',serif; font-style:italic;
+  font-size:0.95rem; color:var(--text-dim);
+}
+
+/* Research fields */
+.fields-grid {
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:1.2rem; margin-top:2.5rem;
+}
+.field-tag {
+  border:1px solid var(--border); border-radius:4px;
+  padding:1.2rem 1.4rem; text-align:center;
+  transition:all 0.3s; background:var(--gold-dim);
+}
+.field-tag:hover { border-color:var(--border2); background:rgba(201,168,76,0.18); }
+.field-icon { font-size:1.5rem; margin-bottom:0.5rem; }
+.field-name {
+  font-family:'Cinzel',serif; font-size:0.65rem; letter-spacing:0.15em;
+  color:var(--gold); text-transform:uppercase;
+}
+
+@media(max-width:900px) {
+  .bio-grid { grid-template-columns:1fr; gap:3rem; }
+  .bio-aside { border-left:none; border-top:1px solid var(--border2); padding-left:0; padding-top:2rem; position:static; }
+  .fields-grid { grid-template-columns:1fr 1fr; }
+}
+@media(max-width:560px) { .fields-grid { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<div id="stars"></div>
+
+<nav>
+  <a class="nav-logo" href="index.html">S · G</a>
+  <div class="nav-links">
+    <a href="about.html" class="active" data-it="Chi sono" data-en="About">Chi sono</a>
+    <a href="publications.html" data-it="Pubblicazioni" data-en="Publications">Pubblicazioni</a>
+    <a href="research.html" data-it="Ricerca" data-en="Research">Ricerca</a>
+    <a href="teaching.html" data-it="Insegnamento" data-en="Teaching">Insegnamento</a>
+    <a href="passions.html" data-it="Passioni" data-en="Passions">Passioni</a>
+    <a href="contact.html" data-it="Contatti" data-en="Contact">Contatti</a>
+    <button class="lang-btn" id="lang-toggle">EN</button>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-eyebrow" data-it="Fisico · Ricercatore · Insegnante" data-en="Physicist · Researcher · Educator">Fisico · Ricercatore · Insegnante</div>
+  <h1 class="page-title" data-it="<span>Chi sono</span>" data-en="<span>About me</span>"><span>Chi sono</span></h1>
+  <p class="page-subtitle"
+     data-it="Calabrese. Un piede in California, uno in Italia. La fisica come lingua madre, il rigore come vocazione."
+     data-en="From Calabria. One foot in California, one in Italy. Physics as a mother tongue, rigour as a vocation.">
+    Calabrese. Un piede in California, uno in Italia. La fisica come lingua madre, il rigore come vocazione.
+  </p>
+  <div class="page-rule"></div>
+</div>
+
+<div class="page-content">
+
+  <div class="bio-grid">
+    <div class="bio-text reveal">
+      <p data-it="Sono nato in Calabria e ho percorso un cammino accademico che attraversa due continenti. Ho conseguito il <em>PhD in Fisica al Boston College</em> sotto la guida del Prof. Kevin Bedell, lavorando sulla termodinamica dei gas di Fermi ultrafreddi e sul crossover BCS-BEC — il passaggio continuo tra il regime BCS di accoppiamento debole e il limite BEC di accoppiamento forte, all'interno dello stesso gas fermionico attrattivo."
+         data-en="I was born in Calabria and followed an academic path across two continents. I earned my <em>PhD in Physics at Boston College</em> under Prof. Kevin Bedell, working on the thermodynamics of ultracold Fermi gases and the BCS-BEC crossover — the continuous evolution between the weak-coupling BCS regime and the strong-coupling BEC limit within the same attractive Fermi gas.">
+        Sono nato in Calabria e ho percorso un cammino accademico che attraversa due continenti. Ho conseguito il <em>PhD in Fisica al Boston College</em> sotto la guida del Prof. Kevin Bedell, lavorando sulla termodinamica dei gas di Fermi ultrafreddi e sul crossover BCS-BEC — il passaggio continuo tra il regime BCS di accoppiamento debole e il limite BEC di accoppiamento forte, all'interno dello stesso gas fermionico attrattivo.
+      </p>
+      <p data-it="Dopo il dottorato ho lavorato come <em>postdoc all'Università La Sapienza di Roma</em>, all'ISC-CNR, dove ho condotto ricerca sui superfluidi e sui supersolidi. Poi la fisica medica a <em>UCLA</em>, con applicazioni cliniche della modellizzazione del respiro."
+         data-en="After my doctorate I worked as a <em>postdoc at Università La Sapienza in Rome</em>, at ISC-CNR, working on superfluids and supersolids. Then medical physics at <em>UCLA</em>, with clinical applications of breathing motion modelling.">
+        Dopo il dottorato ho lavorato come <em>postdoc all'Università La Sapienza di Roma</em>, all'ISC-CNR, dove ho condotto ricerca sui superfluidi e sui supersolidi. Poi la fisica medica a <em>UCLA</em>, con applicazioni cliniche della modellizzazione del respiro.
+      </p>
+      <p data-it="Dal 2016 al 2021 ho fatto parte della <em>collaborazione LIGO</em>, nel gruppo Supernovae all'Embry-Riddle Aeronautical University. Il lavoro riguardava la simulazione e il rilevamento di onde gravitazionali da supernovae a collasso del nucleo."
+         data-en="From 2016 to 2021 I was part of the <em>LIGO collaboration</em>, in the Supernovae group at Embry-Riddle Aeronautical University. The work concerned the simulation and detection of gravitational waves from core-collapse supernovae.">
+        Dal 2016 al 2021 ho fatto parte della <em>collaborazione LIGO</em>, nel gruppo Supernovae all'Embry-Riddle Aeronautical University. Il lavoro riguardava la simulazione e il rilevamento di onde gravitazionali da supernovae a collasso del nucleo.
+      </p>
+      <p data-it="I miei interessi di ricerca attuali riguardano i <em>sensori quantistici per la rivelazione di onde gravitazionali</em>, la <em>materia oscura</em>, il <em>crossover BCS-BEC</em> e i supersolidi, e la <em>simulazione GPU-accelerata di supernovae a collasso del nucleo</em> con PySNova. In parallelo insegno fisica e matematica al <em>Los Angeles City College</em> e al <em>Pasadena City College</em>."
+         data-en="My current research interests include <em>quantum sensors for gravitational wave detection</em>, <em>dark matter</em>, the <em>BCS-BEC crossover</em> and supersolids, and <em>GPU-accelerated core-collapse supernova simulation</em> with PySNova. Alongside this I teach physics and mathematics at <em>Los Angeles City College</em> and <em>Pasadena City College</em>.">
+        I miei interessi di ricerca attuali riguardano i <em>sensori quantistici per la rivelazione di onde gravitazionali</em>, la <em>materia oscura</em>, il <em>crossover BCS-BEC</em> e i supersolidi, e la <em>simulazione GPU-accelerata di supernovae a collasso del nucleo</em> con PySNova. In parallelo insegno fisica e matematica al <em>Los Angeles City College</em> e al <em>Pasadena City College</em>.
+      </p>
+      <p data-it="Credo che la fisica debba essere vissuta, non solo memorizzata. È un modo di guardare l'universo con meraviglia e rigore al tempo stesso — e questo vale in aula come in laboratorio."
+         data-en="I believe physics should be lived, not merely memorised. It is a way of seeing the universe with both wonder and rigour — and this holds in the classroom as much as in the laboratory.">
+        Credo che la fisica debba essere vissuta, non solo memorizzata. È un modo di guardare l'universo con meraviglia e rigore al tempo stesso — e questo vale in aula come in laboratorio.
+      </p>
+    </div>
+
+    <div class="bio-aside reveal">
+      <div class="aside-block">
+        <div class="aside-label" data-it="Origine" data-en="Origin">Origine</div>
+        <div class="aside-val">Palmi, Calabria, Italia</div>
+      </div>
+      <div class="aside-block">
+        <div class="aside-label" data-it="Formazione" data-en="Education">Formazione</div>
+        <div class="aside-val" data-it="PhD Fisica, Boston College<br>Supervisore: Prof. Kevin Bedell" data-en="PhD Physics, Boston College<br>Advisor: Prof. Kevin Bedell">PhD Fisica, Boston College<br>Supervisore: Prof. Kevin Bedell</div>
+      </div>
+      <div class="aside-block">
+        <div class="aside-label" data-it="Collaborazione" data-en="Collaboration">Collaborazione</div>
+        <div class="aside-val" data-it="LIGO Scientific Collaboration<br>ERAU · Gruppo Supernovae<br>2016–2021" data-en="LIGO Scientific Collaboration<br>ERAU · Supernovae group<br>2016–2021">LIGO Scientific Collaboration<br>ERAU · Gruppo Supernovae<br>2016–2021</div>
+      </div>
+      <div class="aside-block">
+        <div class="aside-label" data-it="Insegnamento" data-en="Teaching">Insegnamento</div>
+        <div class="aside-val" data-it="Los Angeles City College<br>Pasadena City College" data-en="Los Angeles City College<br>Pasadena City College">Los Angeles City College<br>Pasadena City College</div>
+      </div>
+      <div class="aside-block">
+        <div class="aside-label" data-it="Premi" data-en="Awards">Premi</div>
+        <div class="aside-val" data-it="Premio Spartenze — Excellence in Research<br>Gonfalone, Città di Palmi" data-en="Premio Spartenze — Excellence in Research<br>Gonfalone, City of Palmi">Premio Spartenze — Excellence in Research<br>Gonfalone, Città di Palmi</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESEARCH FIELDS -->
+  <div class="cv-head reveal" data-it="Aree di ricerca" data-en="Research areas">Aree di ricerca</div>
+  <div class="cv-title reveal" data-it="<em>Interessi</em> scientifici" data-en="Scientific <em>interests</em>"><em>Interessi</em> scientifici</div>
+  <div class="cv-rule"></div>
+  <div class="fields-grid">
+    <div class="field-tag reveal">
+      <div class="field-icon">⚛️</div>
+      <div class="field-name" data-it="Sensori quantistici" data-en="Quantum sensors">Sensori quantistici</div>
+    </div>
+    <div class="field-tag reveal">
+      <div class="field-icon">🌑</div>
+      <div class="field-name" data-it="Materia oscura" data-en="Dark matter">Materia oscura</div>
+    </div>
+    <div class="field-tag reveal">
+      <div class="field-icon">🌊</div>
+      <div class="field-name" data-it="BCS-BEC · Supersolidi" data-en="BCS-BEC · Supersolids">BCS-BEC · Supersolidi</div>
+    </div>
+    <div class="field-tag reveal">
+      <div class="field-icon">💥</div>
+      <div class="field-name" data-it="PySNova · Supernovae" data-en="PySNova · Supernovae">PySNova · Supernovae</div>
+    </div>
+    <div class="field-tag reveal">
+      <div class="field-icon">🌌</div>
+      <div class="field-name" data-it="Onde gravitazionali" data-en="Gravitational waves">Onde gravitazionali</div>
+    </div>
+    <div class="field-tag reveal">
+      <div class="field-icon">🔭</div>
+      <div class="field-name" data-it="Massa del gravitone · PTA" data-en="Graviton mass · PTA">Massa del gravitone · PTA</div>
+    </div>
+  </div>
+
+  <!-- TIMELINE -->
+  <div class="cv-section">
+    <div class="cv-head reveal" data-it="Percorso" data-en="Path">Percorso</div>
+    <div class="cv-title reveal"><em>Curriculum</em></div>
+    <div class="cv-rule"></div>
+    <div class="timeline">
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-copy" data-it="© 2026 Sergio Gaudio. Tutti i diritti riservati." data-en="© 2026 Sergio Gaudio. All rights reserved.">© 2026 Sergio Gaudio. Tutti i diritti riservati.</div>
+  <div class="footer-sig">S · G</div>
+</footer>
+
+<script src="main.js"></script>
+<script>
+const tlObs = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) setTimeout(() => e.target.classList.add('in'), i * 100);
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.tl-item').forEach(el => tlObs.observe(el));
+</script>
+</body>
+</html>

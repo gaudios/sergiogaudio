@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="it" data-lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Passioni — Sergio Gaudio</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.passion-full {
+  display:grid; grid-template-columns:1fr 2fr; gap:0;
+  border:1px solid var(--border); border-radius:4px; overflow:hidden;
+  margin-bottom:2rem; transition:border-color 0.3s;
+}
+.passion-full:hover { border-color:var(--border2); }
+.passion-left {
+  background:var(--gold-dim); padding:2.5rem 2rem;
+  border-right:1px solid var(--border);
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center;
+}
+.passion-emoji { font-size:3rem; margin-bottom:1rem; }
+.passion-name {
+  font-family:'Cinzel',serif; font-size:0.82rem; letter-spacing:0.25em;
+  color:var(--gold); text-transform:uppercase;
+}
+.passion-right {
+  padding:2.2rem 2.2rem;
+  background:linear-gradient(135deg,rgba(15,24,40,0.7),rgba(7,11,18,0.9));
+}
+.passion-right h3 {
+  font-family:'Cormorant Garamond',serif; font-size:1.5rem; font-weight:300;
+  color:var(--text); margin-bottom:0.4rem;
+}
+.passion-right h3 em { color:var(--gold); font-style:italic; }
+.passion-right p {
+  color:var(--text-dim); margin-bottom:0.9rem; line-height:1.78;
+  font-size:0.98rem;
+}
+.passion-right p:last-child { margin-bottom:0; }
+.passion-detail {
+  border-left:2px solid var(--border2); padding-left:1.1rem;
+  margin:1rem 0; font-family:'Cormorant Garamond',serif;
+  font-style:italic; color:var(--text-dim); font-size:0.98rem;
+}
+
+@media(max-width:700px){
+  .passion-full { grid-template-columns:1fr; }
+  .passion-left { border-right:none; border-bottom:1px solid var(--border); padding:1.8rem; }
+}
+</style>
+</head>
+<body>
+<div id="stars"></div>
+
+<nav>
+  <a class="nav-logo" href="index.html">S · G</a>
+  <div class="nav-links">
+    <a href="about.html" data-it="Chi sono" data-en="About">Chi sono</a>
+    <a href="publications.html" data-it="Pubblicazioni" data-en="Publications">Pubblicazioni</a>
+    <a href="research.html" data-it="Ricerca" data-en="Research">Ricerca</a>
+    <a href="teaching.html" data-it="Insegnamento" data-en="Teaching">Insegnamento</a>
+    <a href="passions.html" class="active" data-it="Passioni" data-en="Passions">Passioni</a>
+    <a href="contact.html" data-it="Contatti" data-en="Contact">Contatti</a>
+    <button class="lang-btn" id="lang-toggle">EN</button>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-eyebrow" data-it="Oltre la fisica" data-en="Beyond Physics">Oltre la fisica</div>
+  <h1 class="page-title" data-it="<span>Passioni</span>" data-en="<span>Passions</span>"><span>Passioni</span></h1>
+  <p class="page-subtitle"
+     data-it="La fisica è il mio linguaggio, ma non è l'unico. Jazz, poesia italiana, vinile — mondi diversi che obbediscono alle stesse leggi di bellezza."
+     data-en="Physics is my language, but not my only one. Jazz, Italian poetry, vinyl — different worlds obeying the same laws of beauty.">
+    La fisica è il mio linguaggio, ma non è l'unico. Jazz, poesia italiana, vinile — mondi diversi che obbediscono alle stesse leggi di bellezza.
+  </p>
+  <div class="page-rule"></div>
+</div>
+
+<div class="page-content">
+
+  <!-- JAZZ -->
+  <div class="passion-full reveal">
+    <div class="passion-left">
+      <div class="passion-emoji">🎷</div>
+      <div class="passion-name">Jazz</div>
+    </div>
+    <div class="passion-right">
+      <h3 data-it="L'<em>improvvisazione</em> come metodo" data-en="<em>Improvisation</em> as method">L'<em>improvvisazione</em> come metodo</h3>
+      <p data-it="Il jazz mi ha insegnato qualcosa che la fisica non può insegnare da sola: che l'intuizione viene prima della dimostrazione. Miles Davis non calcolava le note — le sentiva, e poi le suonava. La teoria viene dopo, per capire perché funzionava."
+         data-en="Jazz taught me something physics alone cannot: that intuition comes before proof. Miles Davis did not calculate the notes — he felt them, and then played them. Theory comes after, to understand why it worked.">
+        Il jazz mi ha insegnato qualcosa che la fisica non può insegnare da sola: che l'intuizione viene prima della dimostrazione. Miles Davis non calcolava le note — le sentiva, e poi le suonava. La teoria viene dopo, per capire perché funzionava.
+      </p>
+      <p data-it="C'è qualcosa di profondamente fisico nell'improvvisazione jazz: è un sistema che esplora lo spazio delle possibilità in tempo reale, con vincoli armonici che funzionano come leggi di conservazione. E come in fisica, la bellezza emerge quando quei vincoli sono rispettati con eleganza."
+         data-en="There is something deeply physical about jazz improvisation: it is a system exploring the space of possibilities in real time, with harmonic constraints that function like conservation laws. And as in physics, beauty emerges when those constraints are honored with elegance.">
+        C'è qualcosa di profondamente fisico nell'improvvisazione jazz: è un sistema che esplora lo spazio delle possibilità in tempo reale, con vincoli armonici che funzionano come leggi di conservazione.
+      </p>
+    </div>
+  </div>
+
+  <!-- POETRY -->
+  <div class="passion-full reveal">
+    <div class="passion-left">
+      <div class="passion-emoji">📜</div>
+      <div class="passion-name" data-it="Poesia italiana" data-en="Italian Poetry">Poesia italiana</div>
+    </div>
+    <div class="passion-right">
+      <h3 data-it="<em>Economia</em> di parole, densità di senso" data-en="<em>Economy</em> of words, density of meaning"><em>Economia</em> di parole, densità di senso</h3>
+      <p data-it="La poesia italiana è, per me, un'altra forma di equazione. Leopardi riesce a contenere l'infinito in pochi versi — lo stesso infinito che la fisica descrive con le equazioni di campo. Il meccanismo è diverso, il risultato è lo stesso: qualcosa di vasto compresso in una forma piccola e perfetta."
+         data-en="Italian poetry is, for me, another form of equation. Leopardi manages to contain infinity in a few lines — the same infinity that physics describes with field equations. The mechanism is different, the result the same: something vast compressed into a small and perfect form.">
+        La poesia italiana è, per me, un'altra forma di equazione. Leopardi riesce a contenere l'infinito in pochi versi — lo stesso infinito che la fisica descrive con le equazioni di campo.
+      </p>
+      <div class="passion-detail" data-it="Da Leopardi a Ungaretti, passando per Montale e Pavese. La poesia ermetica, in particolare, condivide con la fisica quantistica una certa resistenza alla parafrasi: il significato è nell'atto del leggere, non nel riassunto." data-en="From Leopardi to Ungaretti, through Montale and Pavese. Hermetic poetry in particular shares with quantum physics a resistance to paraphrase: the meaning lies in the act of reading, not in the summary.">Da Leopardi a Ungaretti, passando per Montale e Pavese. La poesia ermetica condivide con la fisica quantistica una certa resistenza alla parafrasi: il significato è nell'atto del leggere.</div>
+    </div>
+  </div>
+
+  <!-- HI-FI -->
+  <div class="passion-full reveal">
+    <div class="passion-left">
+      <div class="passion-emoji">🎵</div>
+      <div class="passion-name" data-it="Hi-Fi &amp; Vinile" data-en="Hi-Fi &amp; Vinyl">Hi-Fi &amp; Vinile</div>
+    </div>
+    <div class="passion-right">
+      <h3 data-it="Il suono come <em>presenza fisica</em>" data-en="Sound as <em>physical presence</em>">Il suono come <em>presenza fisica</em></h3>
+      <p data-it="C'è qualcosa di irriducibile nel vinile. Non è nostalgia — è fisica. L'ago che segue il solco, la membrana che si muove nell'aria, il suono che riempie la stanza: è una catena analogica continua dalla fonte all'orecchio, senza discretizzazione, senza approssimazione numerica."
+         data-en="There is something irreducible about vinyl. It is not nostalgia — it is physics. The stylus tracing the groove, the membrane moving through air, the sound filling the room: it is a continuous analogue chain from source to ear, without discretisation, without numerical approximation.">
+        C'è qualcosa di irriducibile nel vinile. Non è nostalgia — è fisica. L'ago che segue il solco, la membrana che si muove nell'aria, il suono che riempie la stanza: è una catena analogica continua dalla fonte all'orecchio, senza discretizzazione, senza approssimazione numerica.
+      </p>
+
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-copy" data-it="© 2026 Sergio Gaudio. Tutti i diritti riservati." data-en="© 2026 Sergio Gaudio. All rights reserved.">© 2026 Sergio Gaudio. Tutti i diritti riservati.</div>
+  <div class="footer-sig">S · G</div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
