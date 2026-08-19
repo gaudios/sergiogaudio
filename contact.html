@@ -66,11 +66,7 @@
 <div class="page-hero">
   <div class="page-eyebrow" data-it="Scritemi" data-en="Reach out">Scrivetemi</div>
   <h1 class="page-title" data-it="<span>Contatti</span>" data-en="<span>Contact</span>"><span>Contatti</span></h1>
-  <p class="page-subtitle"
-     data-it="Sono aperto a collaborazioni di ricerca, revisioni di articoli, discussioni sulla didattica e qualsiasi conversazione che mescoli rigore scientifico e curiosità."
-     data-en="I am open to research collaborations, paper reviews, discussions on teaching, and any conversation that blends scientific rigor with genuine curiosity.">
-    Sono aperto a collaborazioni di ricerca, revisioni di articoli, discussioni sulla didattica e qualsiasi conversazione che mescoli rigore scientifico e curiosità.
-  </p>
+
   <div class="page-rule"></div>
 </div>
 
@@ -82,11 +78,11 @@
       <h2 class="s-title" data-it="<em>Links</em>" data-en="<em>Links</em>"><em>Links</em></h2>
       <div class="s-rule"></div>
       <div class="contact-links">
-        <a class="c-link" href="mailto:gaudio@lacitycollege.edu">
+        <a class="c-link" id="email-link" href="#">
           <div class="c-icon">✉</div>
           <div class="c-info">
             <span class="c-label">LACC</span>
-            <span class="c-val">gaudio@lacitycollege.edu</span>
+            <span class="c-val" id="email-text">&#9993;</span>
           </div>
         </a>
         <a class="c-link" href="https://orcid.org" target="_blank" rel="noopener">
@@ -143,5 +139,17 @@
 </footer>
 
 <script src="main.js"></script>
+
+<script>
+(function(){
+  var u = ['g','a','u','d','i','o','s'].join('');
+  var d = ['l','a','c','c','d','.','e','d','u'].join('');
+  var a = u + '@' + d;
+  var el = document.getElementById('email-link');
+  var tx = document.getElementById('email-text');
+  if(el){ el.href = 'mailto:' + a; }
+  if(tx){ tx.textContent = a; }
+})();
+</script>
 </body>
 </html>
