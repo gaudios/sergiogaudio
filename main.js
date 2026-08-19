@@ -73,7 +73,7 @@
   ];
 
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-  const lang = localStorage.getItem('lang') || 'it';
+  const lang = localStorage.getItem('sg-lang') || 'it';
 
   links.forEach(l => {
     const a = document.createElement('a');
@@ -92,9 +92,9 @@
   langBtn.textContent = lang === 'en' ? 'IT' : 'EN';
   langBtn.addEventListener('click', () => {
     document.getElementById('lang-toggle')?.click();
-    langBtn.textContent = (localStorage.getItem('lang')||'it') === 'en' ? 'IT' : 'EN';
+    langBtn.textContent = (localStorage.getItem('sg-lang')||'it') === 'en' ? 'IT' : 'EN';
     menu.querySelectorAll('a[data-it]').forEach(a => {
-      const l2 = localStorage.getItem('lang') || 'it';
+      const l2 = localStorage.getItem('sg-lang') || 'it';
       a.textContent = l2 === 'en' ? a.getAttribute('data-en') : a.getAttribute('data-it');
     });
   });
